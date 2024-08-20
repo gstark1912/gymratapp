@@ -1,0 +1,305 @@
+{
+    "id": 1,
+    "title": "Rutina Completa",
+    "description": "Rutina de entrenamiento completa.",
+    "routineDays": [
+        {
+            "id": 1,
+            "title": "Día 1",
+            "completed": false,
+            "blocks": [
+                {
+                    "id": 1,
+                    "title": "Activación",
+                    "description": "3x15'' cada uno en circuito",
+                    "type": "circuito",
+                    "series": 3,
+                    "workTime": "15''",
+                    "excercises": [
+                        {
+                            "id": 1,
+                            "title": "Pallof en Estocada Lat",
+                            "description": "Solo con banda"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Revuelvo la Olla",
+                            "description": "Con pelota"
+                        },
+                        {
+                            "id": 3,
+                            "title": "Búlgaras OH",
+                            "description": "Con 1 MC 8-12kg"
+                        },
+                        {
+                            "id": 4,
+                            "title": "Isquio en Cajon Isometrico",
+                            "description": "o discos 2 de 20"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Resistencia",
+                    "description": "",
+                    "type": "individual",
+                    "excercises": [
+                        {
+                            "id": 5,
+                            "title": "Clean Barra",
+                            "series": 6,
+                            "reps": "3x6-2x4-1x2",
+                            "weight": "45-55-65",
+                            "pause": "1'30\"",
+                            "time": ""
+                        },
+                        {
+                            "id": 6,
+                            "title": "Estocadas Hacia Atrás Barra",
+                            "series": 3,
+                            "reps": "9-9",
+                            "weight": "40-50",
+                            "pause": "1'",
+                            "time": ""
+                        },
+                        {
+                            "id": 7,
+                            "title": "Remo Barra",
+                            "series": 4,
+                            "reps": "8",
+                            "weight": "60-65",
+                            "pause": "2'",
+                            "time": ""
+                        },
+                        {
+                            "id": 8,
+                            "title": "Zercher Squat Tempo + Normal",
+                            "series": 3,
+                            "reps": "6+4",
+                            "weight": "50",
+                            "pause": "1'",
+                            "time": ""
+                        },
+                        {
+                            "id": 9,
+                            "title": "Chin Ups",
+                            "series": 4,
+                            "reps": "8-8-6-6",
+                            "weight": "",
+                            "pause": "1'",
+                            "time": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Día 2",
+            "completed": false,
+            "blocks": [
+                {
+                    "id": 1,
+                    "title": "Activación Deportiva",
+                    "description": "Nos movemos de forma lateral",
+                    "type": "circuito",
+                    "series": 4,
+                    "round": 1,
+                    "workTime": "8 repeticiones cada uno",
+                    "excercises": [
+                        {
+                            "id": 1,
+                            "title": "Cuádriceps-Isquios"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Psoas-Adductores"
+                        },
+                        {
+                            "id": 3,
+                            "title": "Gemelos"
+                        },
+                        {
+                            "id": 4,
+                            "title": "Bandita Cerrada",
+                            "description": "Si no hay, usar una larga anclada al rack y un solo pie trabaja"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Core",
+                    "description": "3x30'' cada uno",
+                    "type": "circuito",
+                    "series": 3,
+                    "round": 1,
+                    "workTime": "30''",
+                    "excercises": [
+                        {
+                            "id": 5,
+                            "title": "Rod al Pecho Colgado"
+                        },
+                        {
+                            "id": 6,
+                            "title": "Copenhagen con Banco"
+                        },
+                        {
+                            "id": 7,
+                            "title": "Rot con Banda Abrazando una Pelota de 9"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Wall Drills",
+                    "description": "",
+                    "type": "individual",
+                    "excercises": [
+                        {
+                            "id": 8,
+                            "title": "Wall Drill Simple",
+                            "series": 4,
+                            "reps": "15-15"
+                        },
+                        {
+                            "id": 9,
+                            "title": "Reactivo 1P",
+                            "series": 4,
+                            "reps": "5-5"
+                        },
+                        {
+                            "id": 10,
+                            "title": "Triple Extensión",
+                            "series": 3,
+                            "reps": "6"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "INM",
+                    "description": "",
+                    "type": "circuito",
+                    "series": 3,
+                    "round": 3,
+                    "workTime": "18''",
+                    "rest": "10''",
+                    "restBetweenSeries": "2'",
+                    "excercises": [
+                        {
+                            "id": 11,
+                            "title": "Saltos Tandem con Pelota"
+                        },
+                        {
+                            "id": 12,
+                            "title": "SDHP con K8 20-24"
+                        },
+                        {
+                            "id": 13,
+                            "title": "Desplazamientos Laterales 3-4 Metros + Lanzo Pelota a la Pared (ROT con Lanz)"
+                        },
+                        {
+                            "id": 14,
+                            "title": "Plancha Get Up (de Plancha Baja a Alta)"
+                        },
+                        {
+                            "id": 15,
+                            "title": "Swing Americano (Arriba de Todo) Pesado: 20-24"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Día 3",
+            "completed": true,
+            "blocks": [
+                {
+                    "id": 1,
+                    "title": "Activación",
+                    "description": "3x15'' cada uno en circuito",
+                    "type": "circuito",
+                    "series": 3,
+                    "round": 1,
+                    "workTime": "15''",
+                    "excercises": [
+                        {
+                            "id": 1,
+                            "title": "Pallof en Estocada Lat"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Revuelvo la Olla",
+                            "description": "Con pelota"
+                        },
+                        {
+                            "id": 3,
+                            "title": "Búlgaras OH",
+                            "description": "Con 1 MC 8-12kg"
+                        },
+                        {
+                            "id": 4,
+                            "title": "Isquio en Cajón Isométrico"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "",
+                    "description": "",
+                    "type": "individual",
+                    "excercises": [
+                        {
+                            "id": 5,
+                            "title": "Snatch Split con 2 MC",
+                            "series": 5,
+                            "reps": "3-3",
+                            "weight": "15-15",
+                            "pause": "35''"
+                        },
+                        {
+                            "id": 6,
+                            "title": "Back Squat",
+                            "series": 4,
+                            "reps": "8",
+                            "weight": "70-75",
+                            "pause": "2'"
+                        },
+                        {
+                            "id": 7,
+                            "title": "Banco Plano",
+                            "series": 5,
+                            "reps": "10-8-8-6-6",
+                            "weight": "55-65-65-70-70",
+                            "pause": "2'"
+                        },
+                        {
+                            "id": 8,
+                            "title": "Máquina de Dorsalera (barra larga)",
+                            "series": 3,
+                            "reps": "MAX",
+                            "weight": "45",
+                            "pause": "30''"
+                        },
+                        {
+                            "id": 9,
+                            "title": "Press Hombro 2 MC",
+                            "series": 4,
+                            "reps": "8",
+                            "weight": "8-12",
+                            "pause": "1'"
+                        },
+                        {
+                            "id": 10,
+                            "title": "Máquina de Remo",
+                            "series": 1,
+                            "reps": "12x15'",
+                            "weight": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
