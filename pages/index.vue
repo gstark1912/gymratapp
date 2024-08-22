@@ -1,13 +1,15 @@
 <template>
-    <HomeProfile />
+    <!--<HomeProfile />-->
     <el-divider />
     <HomeRoutineOverview />
     <el-divider />
+    <!--
     <el-row>
         <el-col :span="24" class="records">
             <span>Últimos logros</span>
         </el-col>
     </el-row>
+-->
 </template>
 
 <script setup lang="ts">

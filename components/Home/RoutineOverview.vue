@@ -4,7 +4,7 @@
             <span>{{ routine.title }}</span>
         </el-col>
         <el-divider />
-        <el-col v-for="d in routine.routineDays" :key="d.id" :span="8">
+        <el-col v-for="d in routine.routineDays" :key="d.id" :span="24">
             <div class="dummycontainer">
                 <el-card>
                     <template #header>
@@ -14,13 +14,13 @@
                     </template>
                     <p v-if="d.completed">✅</p>
                     <p v-else>⌛</p>
-                    <el-button type="primary" plain>
-                        <NuxtLink :to="`/routine/${routine.id}/day/${d.id}`">
+                    <NuxtLink :to="`/routine/${routine.id}/day/${d.id}`">
+                        <el-button type="primary" plain>
                             <el-link>
                                 Ver más<el-icon class="el-icon--right"><icon-view /></el-icon>
                             </el-link>
-                        </NuxtLink>
-                    </el-button>
+                        </el-button>
+                    </NuxtLink>
                 </el-card>
             </div>
         </el-col>
