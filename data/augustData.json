@@ -1,0 +1,373 @@
+{
+    "id": 2,
+    "title": "Rutina Agosto",
+    "description": "Rutina de entrenamiento para el mes de agosto.",
+    "routineDays": [
+        {
+            "id": 1,
+            "title": "Dia 1",
+            "blocks": [
+                {
+                    "id": 1,
+                    "title": "Activación",
+                    "description": "3x8",
+                    "type": "circuito",
+                    "series": 3,
+                    "round": 1,
+                    "workTime": "8 repeticiones cada uno",
+                    "excercises": [
+                        {
+                            "id": 1,
+                            "title": "Cortitos"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Hip Thrust 1P con 1MC"
+                        },
+                        {
+                            "id": 3,
+                            "title": "Ruedita o Superman con Anillas/TRX"
+                        },
+                        {
+                            "id": 4,
+                            "title": "Apertura de Cadera con MB en Plancha"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Wall Drills",
+                    "description": "",
+                    "type": "individual",
+                    "excercises": [
+                        {
+                            "id": 5,
+                            "title": "Wall Drill Simple Sosteniendo MB",
+                            "series": 3,
+                            "reps": "20-20-20",
+                            "pause": "20''"
+                        },
+                        {
+                            "id": 6,
+                            "title": "Reactivo 1P",
+                            "series": 3,
+                            "reps": "3-3-3",
+                            "pause": "20''"
+                        },
+                        {
+                            "id": 7,
+                            "title": "Triple Extensión",
+                            "series": 3,
+                            "reps": "5",
+                            "pause": "20''"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Bloque 1 - MMSS",
+                    "description": "",
+                    "type": "individual",
+                    "excercises": [
+                        {
+                            "id": 8,
+                            "title": "Clean and Press 2MC en Estocada",
+                            "series": 4,
+                            "reps": "6-6",
+                            "weight": "10-10",
+                            "pause": "50''",
+                            "detalle": ""
+                        },
+                        {
+                            "id": 9,
+                            "title": "3 Saltos Sentadillas con 2MC en Manos y Correr 5 MTS",
+                            "series": 4,
+                            "reps": "1",
+                            "weight": "10-10",
+                            "pause": "45''",
+                            "detalle": ""
+                        },
+                        {
+                            "id": 10,
+                            "title": "Saltos a 1P a 8MTS con Mucho Impulso y Rápidos",
+                            "series": 3,
+                            "reps": "Cada pierna 1 vez",
+                            "weight": "",
+                            "pause": "30''",
+                            "detalle": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "Fuerza Full Body",
+                    "description": "",
+                    "type": "individual",
+                    "excercises": [
+                        {
+                            "id": 11,
+                            "title": "Floor Press en Puente en 1 Pierna y 1 Brazo Hace Press",
+                            "series": 4,
+                            "reps": "6-6",
+                            "weight": "15",
+                            "pause": "1'"
+                        },
+                        {
+                            "id": 12,
+                            "title": "Swing Ruso Pesado",
+                            "series": 4,
+                            "reps": "12",
+                            "weight": ""
+                        },
+                        {
+                            "id": 13,
+                            "title": "Sentadilla 1P con Pelota la Abrazo +",
+                            "series": 4,
+                            "reps": "6-6",
+                            "weight": "9",
+                            "pause": ""
+                        },
+                        {
+                            "id": 14,
+                            "title": "Remo Invertido Rack o Anillas a la Misma Altura",
+                            "series": 4,
+                            "reps": "12",
+                            "weight": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Dia 2",
+            "blocks": [
+                {
+                    "id": 1,
+                    "title": "Movilidad General y Activación",
+                    "description": "Dinámica 1x10 y 1x5 más rápida",
+                    "type": "circuito",
+                    "series": 2,
+                    "round": 1,
+                    "workTime": "",
+                    "excercises": [
+                        {
+                            "id": 1,
+                            "title": "Cuádriceps-Isquios"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Psoas-Adductores"
+                        },
+                        {
+                            "id": 3,
+                            "title": "Gemelos"
+                        },
+                        {
+                            "id": 4,
+                            "title": "Bandita Cerrada Patada (arriba, atrás, costado)",
+                            "description": "2 de 10 de todo"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Core",
+                    "description": "3x20''",
+                    "type": "circuito",
+                    "series": 3,
+                    "round": 1,
+                    "workTime": "20''",
+                    "excercises": [
+                        {
+                            "id": 5,
+                            "title": "Pike + Crunch TRX",
+                            "description": "Si no hay, usar cajón en los pies y hacer Pike y luego escaladores alternados"
+                        },
+                        {
+                            "id": 6,
+                            "title": "Copenhagen Sub y Caída de Cadera"
+                        },
+                        {
+                            "id": 7,
+                            "title": "Rot Pelota y Banda (corto y explosivo)",
+                            "description": "1/4 de giro intenso"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Pliometría",
+                    "description": "",
+                    "type": "individual",
+                    "excercises": [
+                        {
+                            "id": 8,
+                            "title": "Saltos Cortos Frente a Pies Juntos Tipo Canguro",
+                            "series": 4,
+                            "reps": "10MTS",
+                            "pause": ""
+                        },
+                        {
+                            "id": 9,
+                            "title": "Tandem Lat Avanzando de Costado",
+                            "series": 4,
+                            "reps": "10MTS",
+                            "pause": ""
+                        },
+                        {
+                            "id": 10,
+                            "title": "Coordinación Arriba de Disco Bien Rápida",
+                            "series": 3,
+                            "reps": "20''",
+                            "pause": ""
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "INM",
+                    "description": "",
+                    "type": "circuito",
+                    "series": 3,
+                    "round": 2,
+                    "workTime": "15''",
+                    "excercises": [
+                        {
+                            "id": 11,
+                            "title": "ABS Chop con K8 o Disco o Banda",
+                            "description": "Variantes, pero arrodillado a 1P"
+                        },
+                        {
+                            "id": 12,
+                            "title": "Desplaz Lat con Banda en la Cadera",
+                            "description": "3 pasos no más"
+                        },
+                        {
+                            "id": 13,
+                            "title": "Lanzamientos de MB Arrodillado a la Pared",
+                            "description": "Pica y lanzo de nuevo"
+                        },
+                        {
+                            "id": 14,
+                            "title": "Plancha Baja con Rotación Antebrazos Cruzados"
+                        },
+                        {
+                            "id": 15,
+                            "title": "\"V\" en Velocidad",
+                            "description": "Parte del vértice a las puntas"
+                        }
+                    ],
+                    "pauseEntreSeries": "2'"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Día 3",
+            "blocks": [
+                {
+                    "id": 1,
+                    "title": "Activación",
+                    "description": "4x20''",
+                    "type": "circuito",
+                    "series": 4,
+                    "round": 1,
+                    "workTime": "20 segundos",
+                    "excercises": [
+                        {
+                            "id": 1,
+                            "title": "Face Pull Anillas"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Ruedita o Superman"
+                        },
+                        {
+                            "id": 3,
+                            "title": "Búlgaras"
+                        },
+                        {
+                            "id": 4,
+                            "title": "Plancha con Patada"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Fuerza Tren Superior",
+                    "description": "",
+                    "type": "individual",
+                    "excercises": [
+                        {
+                            "id": 5,
+                            "title": "Dorsalera",
+                            "series": 4,
+                            "reps": "8A12",
+                            "weight": "50",
+                            "pause": "1'30''"
+                        },
+                        {
+                            "id": 6,
+                            "title": "Press Hombro 2 MC",
+                            "series": 4,
+                            "reps": "12",
+                            "weight": "18-18",
+                            "pause": "1'30''"
+                        },
+                        {
+                            "id": 7,
+                            "title": "Banco Plano 2 MC",
+                            "series": 4,
+                            "reps": "12",
+                            "weight": "20-20",
+                            "pause": "1'30''"
+                        },
+                        {
+                            "id": 8,
+                            "title": "Remo Polea Baja Casita",
+                            "series": 4,
+                            "reps": "15",
+                            "weight": "40",
+                            "pause": "1'30''"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Fuerza Full Body Core",
+                    "description": "",
+                    "type": "individual",
+                    "excercises": [
+                        {
+                            "id": 9,
+                            "title": "Lanzamiento MB 1 Brazo a la Pared",
+                            "series": 4,
+                            "reps": "6-6",
+                            "weight": "9-12",
+                            "pause": "1'"
+                        },
+                        {
+                            "id": 10,
+                            "title": "Plancha Get Up Disco de 10 KG en Espalda",
+                            "series": 4,
+                            "reps": "12"
+                        },
+                        {
+                            "id": 11,
+                            "title": "Saltos Alternados Corredor Cajón",
+                            "series": 4,
+                            "reps": "12-12"
+                        },
+                        {
+                            "id": 12,
+                            "title": "Swing Americano Pesado",
+                            "series": 4,
+                            "reps": "20"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

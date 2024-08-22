@@ -1,5 +1,6 @@
 import type { Routine } from "~/interface/routine.type";
 import routineData from "~/data/routineData.json";
+import augustData from "~/data/augustData.json";
 import type { RoutineDay } from "~/interface/routineDay.type";
 
 export const useRoutinesStore = defineStore('routine', () => {
@@ -11,7 +12,7 @@ export const useRoutinesStore = defineStore('routine', () => {
 
     function loadRoutineData() {
         try {
-            Object.assign(routine, routineData);
+            Object.assign(routine, augustData);
         } catch (error) {
             console.error('Error al cargar los datos de la rutina:', error);
         }
