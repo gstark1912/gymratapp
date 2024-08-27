@@ -1,11 +1,18 @@
 <template>
-    <el-descriptions v-for="r in workoutBlock.excercises" :key="r.id" :name="r.id" :title="r.title">
-        <el-descriptions-item><el-avatar shape="square" :size="50" :src="squareUrl" /></el-descriptions-item>
-        <el-descriptions-item v-if="r.reps" label="Reps">{{ r.reps }}</el-descriptions-item>
-        <el-descriptions-item v-if="r.series" label="Series">{{ r.series }}</el-descriptions-item>
-        <el-descriptions-item v-if="r.weight" label="Peso">{{ r.weight }}</el-descriptions-item>
-        <el-descriptions-item v-if="r.pause" label="Pausa">{{ r.pause }}</el-descriptions-item>
-        {{ r.description }}
+    <el-descriptions v-for="r in workoutBlock.excercises" :key="r.id" :name="r.id"
+        :title="r.completed ? r.title + ' ✅' : r.title">
+        <div v-if="r.completed !== true">
+            <el-descriptions-item v-if="r.reps" label="Reps">{{ r.reps }}</el-descriptions-item>
+            <el-descriptions-item v-if="r.series && workoutBlock.type !== 'circuito'" label="Series">{{ r.series
+                }}</el-descriptions-item>
+            <el-descriptions-item v-if="r.weight" label="Peso">{{ r.weight }}</el-descriptions-item>
+            <el-descriptions-item v-if="r.pause" label="Pausa">{{ r.pause }}</el-descriptions-item>
+
+            <el-descriptions-item v-if="r.description" label="Descripcion">{{ r.description }}</el-descriptions-item>
+            <el-descriptions-item>
+                <el-checkbox v-if="workoutBlock.type === 'individual'"
+                    v-model="r.completed">Completado</el-checkbox></el-descriptions-item>
+        </div>
     </el-descriptions>
 </template>
 

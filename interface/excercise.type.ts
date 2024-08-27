@@ -5,5 +5,6 @@ export interface Excercise {
     reps: string | undefined,
     series: string | undefined,
     pause: string | undefined,
-    weight: string | undefined
+    weight: string | undefined,
+    completed: boolean | undefined
 }

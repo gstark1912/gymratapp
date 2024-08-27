@@ -10,7 +10,7 @@
                 {
                     "id": 1,
                     "title": "Activación",
-                    "description": "3x8",
+                    "description": "3 x 8 repeticiones cada uno",
                     "type": "circuito",
                     "series": 3,
                     "round": 1,
@@ -26,7 +26,7 @@
                         },
                         {
                             "id": 3,
-                            "title": "Ruedita o Superman con Anillas/TRX"
+                            "title": "Ruedita TRX"
                         },
                         {
                             "id": 4,
@@ -44,14 +44,14 @@
                             "id": 5,
                             "title": "Wall Drill Simple Sosteniendo MB",
                             "series": 3,
-                            "reps": "20-20-20",
+                            "reps": "25",
                             "pause": "20''"
                         },
                         {
                             "id": 6,
                             "title": "Reactivo 1P",
                             "series": 3,
-                            "reps": "3-3-3",
+                            "reps": "4",
                             "pause": "20''"
                         },
                         {
@@ -72,7 +72,7 @@
                         {
                             "id": 8,
                             "title": "Clean and Press 2MC en Estocada",
-                            "series": 4,
+                            "series": 5,
                             "reps": "6-6",
                             "weight": "10-10",
                             "pause": "50''",
@@ -100,15 +100,15 @@
                 },
                 {
                     "id": 4,
-                    "title": "Fuerza Full Body",
-                    "description": "",
-                    "type": "individual",
+                    "title": "Fuerza Full Body (circuito)",
+                    "description": "4 series",
+                    "type": "circuito",
                     "excercises": [
                         {
                             "id": 11,
                             "title": "Floor Press en Puente en 1 Pierna y 1 Brazo Hace Press",
                             "series": 4,
-                            "reps": "6-6",
+                            "reps": "7-7",
                             "weight": "15",
                             "pause": "1'"
                         },
@@ -116,14 +116,14 @@
                             "id": 12,
                             "title": "Swing Ruso Pesado",
                             "series": 4,
-                            "reps": "12",
+                            "reps": "15",
                             "weight": ""
                         },
                         {
                             "id": 13,
                             "title": "Sentadilla 1P con Pelota la Abrazo +",
                             "series": 4,
-                            "reps": "6-6",
+                            "reps": "7-7",
                             "weight": "9",
                             "pause": ""
                         },
@@ -131,7 +131,7 @@
                             "id": 14,
                             "title": "Remo Invertido Rack o Anillas a la Misma Altura",
                             "series": 4,
-                            "reps": "12",
+                            "reps": "15",
                             "weight": ""
                         }
                     ]

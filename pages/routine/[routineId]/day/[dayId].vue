@@ -6,8 +6,9 @@
         <el-collapse accordion>
             <el-collapse-item v-for="r in routineDay.blocks" :key="r.id" :name="r.id">
                 <template #title>
-                    <p><b class="blockItemTitle">{{ r.title }}</b> {{ r.description?.length == 0 ? '' : '- ' +
-                        r.description
+                    <p><b class="blockItemTitle">{{ r.title }}</b>
+                        {{ r.description?.length == 0 ? '' : '- ' +
+                            r.description
                         }}</p>
                 </template>
                 <div>
