@@ -1,6 +1,6 @@
 <template>
     <el-descriptions v-for="r in workoutBlock.excercises" :key="r.id" :name="r.id"
-        :title="r.completed ? r.title + ' ✅💪' : r.title" border>
+        :title="r.completed ? r.title + ' ✅💪' : r.title" direction="vertical" border>
         <div v-if="r.completed !== true">
             <el-descriptions-item v-if="r.photoType" label="Foto" :rowspan="1">
                 <el-avatar shape="square" :size="50" :src="squareUrl" />
@@ -17,8 +17,8 @@
         <el-descriptions-item label="Esfuerzo" v-if="workoutBlock.skipEffort !== true">
             <el-rate v-model="r.effort" />
         </el-descriptions-item>
-        <el-descriptions-item label="Completar" v-if="isIndivWorkout">
-            <el-checkbox v-model="r.completed" :disabled="r.effort === 0">Completado</el-checkbox>
+        <el-descriptions-item label="" v-if="isIndivWorkout">
+            <el-checkbox v-model="r.completed" :disabled="r.effort === 0"></el-checkbox>
         </el-descriptions-item>
     </el-descriptions>
 </template>
