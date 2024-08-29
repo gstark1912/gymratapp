@@ -10,5 +10,6 @@ export interface WorkoutBlock {
     rest: string | undefined,
     restBetweenSeries: string | undefined
     workTime: string | undefined,
+    skipEffort: boolean | undefined,
     excercises: Excercise[]
 }

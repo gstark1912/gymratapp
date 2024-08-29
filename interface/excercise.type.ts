@@ -6,5 +6,7 @@ export interface Excercise {
     series: string | undefined,
     pause: string | undefined,
     weight: string | undefined,
-    completed: boolean | undefined
+    completed: boolean | undefined,
+    effort: number | undefined,
+    photoType: number | undefined
 }

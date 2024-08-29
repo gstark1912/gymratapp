@@ -14,6 +14,7 @@
                     "type": "circuito",
                     "series": 3,
                     "round": 1,
+                    "skipEffort": true,
                     "workTime": "8 repeticiones cada uno",
                     "excercises": [
                         {
