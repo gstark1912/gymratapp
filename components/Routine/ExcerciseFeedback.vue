@@ -13,13 +13,15 @@
 
 <script setup lang="ts">
 
+const emit = defineEmits(['update:dialogFormVisible', 'update:feedback']);
+
 let props = defineProps<{
-    //feedback: string | undefined,
+    feedback: string | undefined,
     dialogFormVisible: boolean
 }>();
 
 const form = reactive({
-    feedback: ''//props.feedback
+    feedback: props.feedback
 })
 
 const showDialog = ref(props.dialogFormVisible);
@@ -28,11 +30,12 @@ watch(() => props.dialogFormVisible, (newValue) => {
 });
 
 const ok = () => {
-    showDialog.value = false;
+    emit('update:dialogFormVisible', false);
+    emit('update:feedback', form.feedback);
 }
 
 const cancel = () => {
-    showDialog.value = false;
+    emit('update:dialogFormVisible', false);
 }
 
 </script>

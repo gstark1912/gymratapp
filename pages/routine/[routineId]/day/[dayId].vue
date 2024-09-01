@@ -78,16 +78,13 @@ const copyText = () => {
     if (review.value.length > 0) {
         reviewString.value = '';
         review.value.forEach(r => {
-            if (r.isTitle)
-                reviewString.value += '\n';
-
             let text = '';
             if (r.isTitle)
-                text = `*${r.title}*`;
+                text = `\n*${r.title}*`;
             else if (r.isFeedback)
-                text = `_${r.title}_`;
+                text = `\n_${r.title}_`;
             else
-                text = r.title;
+                text = `\n${r.title}`;
             reviewString.value += text + '\n';
         });
         copy(reviewString.value);
@@ -117,7 +114,7 @@ const createReview = () => {
                         eff = eff + '⭐';
                     }
                     review.value.push({
-                        "title": ex.title + " - Esfuerzo: " + eff
+                        "title": ex.title + " - Esf: " + eff
                     });
                 }
                 if (ex.feedback) {
