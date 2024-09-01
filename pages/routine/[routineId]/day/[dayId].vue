@@ -7,9 +7,16 @@
             <el-collapse-item v-for="r in routineDay.blocks" :key="r.id" :name="r.id">
                 <template #title>
                     <p><b class="blockItemTitle">{{ r.title }}</b>
-                        {{ r.description?.length == 0 ? '' : '- ' +
-                            r.description
-                        }}</p>
+                        <span v-if="r.type !== 'tabata'">
+                            {{ r.description?.length == 0 ? '' : '- ' +
+                                r.description
+                            }}
+                        </span>
+                        <span v-else>
+                            {{ ' ' + r.series + ' series x ' + r.round + ' rondas - '
+                                + r.restBetweenSeries + ' de pausa.' }}
+                        </span>
+                    </p>
                 </template>
                 <div>
                     <RoutineWorkoutBlock :workoutBlock="r" />
@@ -73,7 +80,15 @@ const copyText = () => {
         review.value.forEach(r => {
             if (r.isTitle)
                 reviewString.value += '\n';
-            reviewString.value += (r.isTitle ? `*${r.title}*` : r.title) + '\n';
+
+            let text = '';
+            if (r.isTitle)
+                text = `*${r.title}*`;
+            else if (r.isFeedback)
+                text = `_${r.title}_`;
+            else
+                text = r.title;
+            reviewString.value += text + '\n';
         });
         copy(reviewString.value);
         ElMessage({
@@ -103,6 +118,12 @@ const createReview = () => {
                     }
                     review.value.push({
                         "title": ex.title + " - Esfuerzo: " + eff
+                    });
+                }
+                if (ex.feedback) {
+                    review.value.push({
+                        "title": ex.feedback,
+                        "isFeedback": true
                     });
                 }
             });

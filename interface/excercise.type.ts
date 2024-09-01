@@ -8,5 +8,6 @@ export interface Excercise {
     weight: string | undefined,
     completed: boolean | undefined,
     effort: number | undefined,
-    photoType: number | undefined
+    photoType: number | undefined,
+    feedback: string | undefined
 }
