@@ -92,7 +92,7 @@
                         {
                             "id": 10,
                             "title": "Saltos a 1P a 8MTS con Mucho Impulso y Rápidos",
-                            "series": 3,
+                            "series": 4,
                             "reps": "Cada pierna 1 vez",
                             "weight": "",
                             "pause": "30''",
@@ -103,7 +103,7 @@
                 {
                     "id": 4,
                     "title": "Fuerza Full Body (circuito)",
-                    "description": "4 series",
+                    "description": "5 series",
                     "type": "circuito",
                     "excercises": [
                         {
@@ -233,11 +233,11 @@
                 {
                     "id": 4,
                     "title": "INM",
-                    "description": "",
+                    "description": "20''x10''",
                     "type": "tabata",
                     "series": 3,
                     "round": 3,
-                    "workTime": "15''",
+                    "workTime": "20''",
                     "excercises": [
                         {
                             "id": 11,
@@ -342,7 +342,7 @@
                             "title": "Remo Polea Baja Casita",
                             "series": 4,
                             "reps": "15",
-                            "weight": "40",
+                            "weight": "60",
                             "pause": "1'30''"
                         }
                     ]
@@ -350,7 +350,7 @@
                 {
                     "id": 4,
                     "title": "Fuerza Full Body Core",
-                    "description": "4 series",
+                    "description": "5 series",
                     "type": "circuito",
                     "excercises": [
                         {
