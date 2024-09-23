@@ -236,7 +236,7 @@
                     "description": "20''x10''",
                     "type": "tabata",
                     "series": 3,
-                    "round": 3,
+                    "round": 4,
                     "workTime": "20''",
                     "excercises": [
                         {
@@ -308,7 +308,7 @@
                         {
                             "id": 5,
                             "title": "Dorsalera",
-                            "series": 4,
+                            "series": 5,
                             "reps": "8A12",
                             "weight": "50",
                             "pause": "1'30''"
@@ -316,7 +316,7 @@
                         {
                             "id": 6,
                             "title": "Press Hombro 2 MC",
-                            "series": 4,
+                            "series": 5,
                             "reps": "12",
                             "weight": "18-18",
                             "pause": "1'30''"
@@ -332,7 +332,7 @@
                         {
                             "id": 7,
                             "title": "Banco Plano 2 MC",
-                            "series": 4,
+                            "series": 5,
                             "reps": "12",
                             "weight": "22-22",
                             "pause": "1'30''"
@@ -340,7 +340,7 @@
                         {
                             "id": 8,
                             "title": "Remo Polea Baja Casita",
-                            "series": 4,
+                            "series": 5,
                             "reps": "15",
                             "weight": "60",
                             "pause": "1'30''"
@@ -357,7 +357,7 @@
                             "id": 9,
                             "title": "Lanzamiento MB 1 Brazo a la Pared",
                             "series": 4,
-                            "reps": "7-7",
+                            "reps": "9-9",
                             "weight": "9-12",
                             "pause": "1'"
                         },
