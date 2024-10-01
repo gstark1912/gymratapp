@@ -1,0 +1,112 @@
+{
+    "id": 2,
+    "title": "Rutina Octubre",
+    "description": "Rutina de entrenamiento para el mes de octubre.",
+    "routineDays": [
+        {
+            "id": 1,
+            "title": "Día 1",
+            "blocks": [
+                {
+                    "id": 1,
+                    "title": "Activación",
+                    "description": "3x8",
+                    "skipEffort": true,
+                    "type": "circuito",
+                    "series": 3,
+                    "round": 1,
+                    "workTime": "8 repeticiones cada uno",
+                    "excercises": [
+                        {
+                            "id": 1,
+                            "title": "Sentadilla Pulso"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Face Pull Anillas"
+                        },
+                        {
+                            "id": 3,
+                            "title": "Ruedita o Superman con Anillas/TRX"
+                        },
+                        {
+                            "id": 4,
+                            "title": "Good Morning con Disco a 1P"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Fuerza",
+                    "description": "",
+                    "type": "individual",
+                    "excercises": [
+                        {
+                            "id": 5,
+                            "title": "High Pull + Clean Barra",
+                            "series": 4,
+                            "reps": "2+2",
+                            "weight": "40A60",
+                            "pause": "1'"
+                        },
+                        {
+                            "id": 6,
+                            "title": "Press Split desde Front Rack",
+                            "series": 3,
+                            "reps": "3-3",
+                            "weight": "40",
+                            "pause": "1'"
+                        },
+                        {
+                            "id": 7,
+                            "title": "Back Squat",
+                            "series": 4,
+                            "reps": "5",
+                            "weight": "60",
+                            "pause": "2'",
+                            "tempo": "3-2-1-0"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Cuerpo Completo + Core",
+                    "description": "4 series",
+                    "type": "circuito",
+                    "series": 3,
+                    "round": 1,
+                    "workTime": "",
+                    "excercises": [
+                        {
+                            "id": 8,
+                            "title": "PM Rumano con MC o KB + Saltos al Cajón + Coordinación Disco + ABS Libre",
+                            "series": "3/4",
+                            "reps": "8A12",
+                            "weight": "20-20",
+                            "pause": "20\""
+                        },
+                        {
+                            "id": 9,
+                            "title": "Saltos al Cajón",
+                            "reps": "6",
+                            "pause": "20\""
+                        },
+                        {
+                            "id": 10,
+                            "title": "Coordinación Disco",
+                            "reps": "20\"",
+                            "weight": "10",
+                            "pause": "20\""
+                        },
+                        {
+                            "id": 11,
+                            "title": "ABS Libre",
+                            "reps": "20\"",
+                            "pause": "20\""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
