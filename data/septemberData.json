@@ -46,15 +46,16 @@
                             "title": "High Pull + Clean Barra",
                             "series": 4,
                             "reps": "2+2",
-                            "weight": "40A60",
-                            "pause": "1'"
+                            "weight": "60kg",
+                            "pause": "1'",
+                            "description": "Pisar fuerte al recibir el clean"
                         },
                         {
                             "id": 6,
                             "title": "Press Split desde Front Rack",
                             "series": 3,
                             "reps": "3-3",
-                            "weight": "40",
+                            "weight": "45",
                             "pause": "1'"
                         },
                         {
@@ -81,9 +82,10 @@
                             "id": 8,
                             "title": "PM Rumano con MC o KB + Saltos al Cajón + Coordinación Disco + ABS Libre",
                             "series": "3/4",
-                            "reps": "8A12",
+                            "reps": "12",
                             "weight": "20-20",
-                            "pause": "20\""
+                            "pause": "20\"",
+                            "description": "Acordarse de subir la cola al bajar"
                         },
                         {
                             "id": 9,
@@ -103,6 +105,187 @@
                             "title": "ABS Libre",
                             "reps": "20\"",
                             "pause": "20\""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Día 2",
+            "blocks": [
+                {
+                    "id": 1,
+                    "title": "Fuerza - Circuito 1",
+                    "description": "4 series",
+                    "type": "circuito",
+                    "series": 4,
+                    "round": 1,
+                    "excercises": [
+                        {
+                            "id": 1,
+                            "title": "Banco Plano",
+                            "reps": "5",
+                            "weight": "50A65",
+                            "pause": "2'"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Dominadas",
+                            "reps": "MAX",
+                            "weight": "",
+                            "pause": "2'"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "title": "Fuerza - Circuito 2",
+                    "description": "3 series",
+                    "type": "circuito",
+                    "series": 3,
+                    "round": 1,
+                    "excercises": [
+                        {
+                            "id": 3,
+                            "title": "Remo Barra Supino",
+                            "reps": "5",
+                            "weight": "50A65",
+                            "pause": "2'"
+                        },
+                        {
+                            "id": 4,
+                            "title": "Floor Press",
+                            "reps": "12",
+                            "weight": "18--20",
+                            "pause": "2'"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Fuerza - Circuito 3",
+                    "description": "3 series",
+                    "type": "circuito",
+                    "series": 3,
+                    "round": 1,
+                    "excercises": [
+                        {
+                            "id": 5,
+                            "title": "Press Hombro 2 MC",
+                            "reps": "8",
+                            "weight": "10A15",
+                            "pause": "2'"
+                        },
+                        {
+                            "id": 6,
+                            "title": "Vuelos Laterales",
+                            "reps": "12",
+                            "weight": "5",
+                            "pause": "1'"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "Fuerza - Vuelos Frontales Disco",
+                    "description": "",
+                    "type": "individual",
+                    "series": 2,
+                    "round": 1,
+                    "excercises": [
+                        {
+                            "id": 7,
+                            "title": "Vuelos Frontales Disco",
+                            "reps": "15A20",
+                            "weight": "10A15",
+                            "pause": "1'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Día 3",
+            "blocks": [
+                {
+                    "id": 1,
+                    "title": "Fuerza",
+                    "description": "",
+                    "type": "individual",
+                    "series": 3,
+                    "round": 1,
+                    "excercises": [
+                        {
+                            "id": 1,
+                            "title": "Zercher Rumano",
+                            "reps": "8--6--5",
+                            "weight": "30-40-50",
+                            "pause": "1'",
+                            "series": 3
+                        },
+                        {
+                            "id": 2,
+                            "title": "PM Conv // PM Conv Disco",
+                            "reps": "8-6-5-3",
+                            "weight": "60-70//80-85",
+                            "pause": "2'",
+                            "series": 4
+                        },
+                        {
+                            "id": 3,
+                            "title": "Hip Thrust 1P Asimétrico",
+                            "reps": "10-10",
+                            "weight": "15 MC",
+                            "pause": "1'",
+                            "series": 2
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "Fuerza - Circuito",
+                    "description": "3 series",
+                    "type": "circuito",
+                    "series": 3,
+                    "round": 1,
+                    "excercises": [
+                        {
+                            "id": 4,
+                            "title": "Chin Ups",
+                            "reps": "MAX",
+                            "pause": "2'"
+                        },
+                        {
+                            "id": 5,
+                            "title": "Flexiones",
+                            "reps": "12A15",
+                            "pause": "2'"
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "title": "Fuerza - Circuito",
+                    "description": "3 series",
+                    "type": "circuito",
+                    "series": 3,
+                    "round": 1,
+                    "excercises": [
+                        {
+                            "id": 6,
+                            "title": "Bíceps Barra",
+                            "reps": "8A12",
+                            "weight": "20",
+                            "pause": "1'"
+                        },
+                        {
+                            "id": 7,
+                            "title": "Tríceps Francés",
+                            "reps": "8A12",
+                            "weight": "15 MC",
+                            "pause": "1'"
                         }
                     ]
                 }
