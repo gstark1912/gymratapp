@@ -46,26 +46,44 @@
                             "title": "High Pull + Clean Barra",
                             "series": 4,
                             "reps": "2+2",
-                            "weight": "60kg",
+                            "weight": "70kg",
                             "pause": "1'",
-                            "description": "Pisar fuerte al recibir el clean"
+                            "description": "Pisar fuerte al recibir el clean",
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "weight": 60
+                                }
+                            ]
                         },
                         {
                             "id": 6,
                             "title": "Press Split desde Front Rack",
                             "series": 3,
                             "reps": "3-3",
-                            "weight": "45",
-                            "pause": "1'"
+                            "weight": "50",
+                            "pause": "1'",
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "weight": 45
+                                }
+                            ]
                         },
                         {
                             "id": 7,
                             "title": "Back Squat",
                             "series": 4,
                             "reps": "5",
-                            "weight": "60",
+                            "weight": "70",
                             "pause": "2'",
-                            "tempo": "3-2-1-0"
+                            "tempo": "3-2-1-0",
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "weight": 60
+                                }
+                            ]
                         }
                     ]
                 },
@@ -74,9 +92,15 @@
                     "title": "Cuerpo Completo + Core",
                     "description": "4 series",
                     "type": "circuito",
-                    "series": 3,
+                    "series": 4,
                     "round": 1,
                     "workTime": "",
+                    "loads": [
+                        {
+                            "week": 1,
+                            "series": 3
+                        }
+                    ],
                     "excercises": [
                         {
                             "id": 8,
