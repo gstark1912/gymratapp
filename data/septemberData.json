@@ -150,15 +150,28 @@
                             "id": 1,
                             "title": "Banco Plano",
                             "reps": "5",
-                            "weight": "50A65",
-                            "pause": "2'"
+                            "weight": "60+",
+                            "pause": "2'",
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "weight": 60
+                                }
+                            ]
                         },
                         {
                             "id": 2,
                             "title": "Dominadas",
                             "reps": "MAX",
                             "weight": "",
-                            "pause": "2'"
+                            "pause": "2'",
+                            "description": "último, 8-6-6-4",
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "reps": "8-6-6-4"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -169,20 +182,38 @@
                     "type": "circuito",
                     "series": 3,
                     "round": 1,
+                    "loads": [
+                        {
+                            "week": 1,
+                            "series": 4
+                        }
+                    ],
                     "excercises": [
                         {
                             "id": 3,
                             "title": "Remo Barra Supino",
                             "reps": "5",
-                            "weight": "50A65",
-                            "pause": "2'"
+                            "weight": "60+",
+                            "pause": "2'",
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "weight": 60
+                                }
+                            ]
                         },
                         {
                             "id": 4,
                             "title": "Floor Press",
                             "reps": "12",
-                            "weight": "18--20",
-                            "pause": "2'"
+                            "weight": "20+",
+                            "pause": "2'",
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "weight": 20
+                                }
+                            ]
                         }
                     ]
                 },
@@ -198,15 +229,27 @@
                             "id": 5,
                             "title": "Press Hombro 2 MC",
                             "reps": "8",
-                            "weight": "10A15",
-                            "pause": "2'"
+                            "weight": "15+",
+                            "pause": "2'",
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "weight": 15
+                                }
+                            ]
                         },
                         {
                             "id": 6,
                             "title": "Vuelos Laterales",
                             "reps": "12",
-                            "weight": "5",
-                            "pause": "1'"
+                            "weight": "7+",
+                            "pause": "1'",
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "weight": 7
+                                }
+                            ]
                         }
                     ]
                 },
@@ -221,9 +264,17 @@
                         {
                             "id": 7,
                             "title": "Vuelos Frontales Disco",
-                            "reps": "15A20",
-                            "weight": "10A15",
-                            "pause": "1'"
+                            "series": 3,
+                            "reps": "15+",
+                            "weight": "10+",
+                            "pause": "1'",
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "series": 2,
+                                    "weight": 10
+                                }
+                            ]
                         }
                     ]
                 }
@@ -245,25 +296,47 @@
                             "id": 1,
                             "title": "Zercher Rumano",
                             "reps": "8--6--5",
-                            "weight": "30-40-50",
+                            "weight": "40-50-60",
                             "pause": "1'",
-                            "series": 3
+                            "series": 3,
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "reps": "8--6--5",
+                                    "weight": "30-40-50"
+                                }
+                            ]
                         },
                         {
                             "id": 2,
                             "title": "PM Conv // PM Conv Disco",
-                            "reps": "8-6-5-3",
+                            "reps": "8-6-5-3-3",
                             "weight": "60-70//80-85",
                             "pause": "2'",
-                            "series": 4
+                            "series": 5,
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "reps": "8--6--5--3",
+                                    "series": 4,
+                                    "weight": "60-70//80-85"
+                                }
+                            ]
                         },
                         {
                             "id": 3,
                             "title": "Hip Thrust 1P Asimétrico",
                             "reps": "10-10",
-                            "weight": "15 MC",
+                            "weight": "15+",
                             "pause": "1'",
-                            "series": 2
+                            "series": 3,
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "weight": "15",
+                                    "series": 2
+                                }
+                            ]
                         }
                     ]
                 },
@@ -272,14 +345,27 @@
                     "title": "Fuerza - Circuito",
                     "description": "3 series",
                     "type": "circuito",
-                    "series": 3,
+                    "series": 4,
                     "round": 1,
+                    "loads": [
+                        {
+                            "week": 1,
+                            "series": 3
+                        }
+                    ],
                     "excercises": [
                         {
                             "id": 4,
                             "title": "Chin Ups",
                             "reps": "MAX",
-                            "pause": "2'"
+                            "pause": "2'",
+                            "description": "10-8-6",
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "reps": "10-8-6"
+                                }
+                            ]
                         },
                         {
                             "id": 5,
@@ -300,16 +386,28 @@
                         {
                             "id": 6,
                             "title": "Bíceps Barra",
-                            "reps": "8A12",
-                            "weight": "20",
-                            "pause": "1'"
+                            "reps": "12",
+                            "weight": "20+",
+                            "pause": "1'",
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "weight": "20"
+                                }
+                            ]
                         },
                         {
                             "id": 7,
                             "title": "Tríceps Francés",
-                            "reps": "8A12",
-                            "weight": "15 MC",
-                            "pause": "1'"
+                            "reps": "12",
+                            "weight": "15+",
+                            "pause": "1'",
+                            "loads": [
+                                {
+                                    "week": 1,
+                                    "weight": "15"
+                                }
+                            ]
                         }
                     ]
                 }
