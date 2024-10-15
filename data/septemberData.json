@@ -315,15 +315,21 @@
                         {
                             "id": 1,
                             "title": "Zercher Rumano",
-                            "reps": "8--6--5",
+                            "reps": "8--6--5--5",
                             "weight": "40-50-60",
                             "pause": "1'",
-                            "series": 3,
+                            "series": 4,
                             "loads": [
                                 {
                                     "week": 1,
                                     "reps": "8--6--5",
                                     "weight": "30-40-50"
+                                },
+                                {
+                                    "week": 2,
+                                    "series": 3,
+                                    "reps": "8--6--5",
+                                    "weight": "40-50-60"
                                 }
                             ]
                         },
@@ -346,7 +352,7 @@
                         {
                             "id": 3,
                             "title": "Hip Thrust 1P Asimétrico",
-                            "reps": "10-10",
+                            "reps": "12-12",
                             "weight": "15+",
                             "pause": "1'",
                             "series": 3,
@@ -355,6 +361,11 @@
                                     "week": 1,
                                     "weight": "15",
                                     "series": 2
+                                },
+                                {
+                                    "week": 2,
+                                    "weight": "15",
+                                    "reps": "10-10"
                                 }
                             ]
                         }
