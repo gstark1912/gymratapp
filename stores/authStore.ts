@@ -1,12 +1,10 @@
 import { defineStore } from 'pinia';
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { onAuthStateChanged } from 'firebase/auth';
 import type { User } from 'firebase/auth';
 
 export const useAuthStore = defineStore('auth', () => {
     const currentUser = ref<User | null>(null);
-
-    const { $auth } = useNuxtApp();
 
     // Recuperar el usuario del localStorage si existe
     if (typeof window !== 'undefined') {
@@ -16,21 +14,40 @@ export const useAuthStore = defineStore('auth', () => {
         }
     }
 
-    // Monitorea el estado de autenticación cuando se monta la app
-    onMounted(() => {
-        onAuthStateChanged($auth, (user) => {
-            currentUser.value = user;
+    const { $auth } = useNuxtApp();
+    const getCurrentUser = () => {
+        return new Promise((resolve, reject) => {
+            try {
 
-            // Guarda el usuario en localStorage si está autenticado, o limpia el almacenamiento si no lo está
-            if (user) {
-                localStorage.setItem('currentUser', JSON.stringify(user));
-            } else {
-                localStorage.removeItem('currentUser');
+                const unsubscribe =
+                    onAuthStateChanged($auth, (user) => {
+                        try {
+                            if (user) {
+                                currentUser.value = user;
+                                localStorage.setItem('currentUser', JSON.stringify(user));
+                            }
+                            else {
+                                currentUser.value = null;
+                                localStorage.removeItem('currentUser');
+                            }
+                            resolve(user);
+                        } catch (error) {
+                            console.log('Error al manejar el estado de autenticación:', error);
+                        } finally {
+                            // Llama a `unsubscribe()` para detener la escucha después de que el estado se verifique una vez
+                            unsubscribe();
+                        }
+                    }, e => reject(e));
+
+            } catch (error) {
+                debugger;
+                console.log(error);
             }
-        });
-    });
+        })
+    };
 
     return {
-        currentUser
+        currentUser,
+        getCurrentUser
     };
 });

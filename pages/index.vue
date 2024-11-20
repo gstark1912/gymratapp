@@ -1,6 +1,6 @@
 <template>
-    <!--<HomeProfile />-->
-    <el-divider />
+    <!--<HomeProfile />
+    <el-divider />-->
     <HomeRoutineOverview />
     <el-divider />
     <!--
