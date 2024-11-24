@@ -3,8 +3,8 @@
         <el-avatar :size="40"
             src='https://t4.ftcdn.net/jpg/07/04/95/71/360_F_704957132_fed1XncFqXDPP52rd8A7Ci03uHG0L8yl.jpg' />
         <div v-if="user.email !== ''">
-            <el-text class="toolbar-text" size="large">Hola {{ user.email }}</el-text>
-            <el-button type="primary" @click="logOff()" :icon="UserFilled" circle></el-button>
+            <el-text class="toolbar-text" size="large">Hola {{ user.displayName }}</el-text>
+            <el-button type="primary" @click="goToProfile()" :icon="UserFilled" circle></el-button>
             <el-button type="danger" @click="logOff()" :icon="SwitchButton" circle></el-button>
         </div>
     </div>
@@ -35,6 +35,11 @@ watchEffect(() => {
 const logOff = async () => {
     await logOffUser();
     navigateTo('/login');
+}
+
+
+const goToProfile = () => {
+    navigateTo('/profile');
 }
 
 </script>

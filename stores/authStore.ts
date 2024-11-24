@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged, signOut, updateProfile } from 'firebase/auth';
 import type { User } from 'firebase/auth';
 
 export const useAuthStore = defineStore('auth', () => {
@@ -43,6 +43,21 @@ export const useAuthStore = defineStore('auth', () => {
         })
     };
 
+    const updateUserProfile = async (user, displayName, photoURL) => {
+        try {
+            await updateProfile(user, {
+                displayName,
+                photoURL
+            });
+            debugger;
+            if (currentUser.value) {
+                Object.assign(currentUser.value, { displayName, photoURL });
+            }
+        } catch (error) {
+            console.error("Error al actualizar el perfil:", error);
+        }
+    };
+
     const logOffUser = async () => {
         await signOut($auth)
             .then(() => {
@@ -57,6 +72,7 @@ export const useAuthStore = defineStore('auth', () => {
     return {
         currentUser,
         getCurrentUser,
-        logOffUser
+        logOffUser,
+        updateUserProfile
     };
 });
