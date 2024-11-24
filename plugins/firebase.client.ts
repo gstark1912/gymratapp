@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getFirestore } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -15,9 +16,12 @@ export default defineNuxtPlugin((nuxtApp) => {
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const firestore = getFirestore(app);
+
     return {
         provide: {
-            auth
+            auth,
+            firestore
         }
     }
 });

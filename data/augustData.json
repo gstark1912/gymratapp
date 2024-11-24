@@ -46,14 +46,14 @@
                             "id": 5,
                             "title": "Wall Drill Simple Sosteniendo MB",
                             "series": 3,
-                            "reps": "25",
+                            "reps": "20",
                             "pause": "20''"
                         },
                         {
                             "id": 6,
                             "title": "Reactivo 1P",
                             "series": 3,
-                            "reps": "4",
+                            "reps": "3",
                             "pause": "20''"
                         },
                         {
@@ -74,7 +74,7 @@
                         {
                             "id": 8,
                             "title": "Clean and Press 2MC en Estocada",
-                            "series": 5,
+                            "series": 4,
                             "reps": "6-6",
                             "weight": "10-10",
                             "pause": "50''",
@@ -92,7 +92,7 @@
                         {
                             "id": 10,
                             "title": "Saltos a 1P a 8MTS con Mucho Impulso y Rápidos",
-                            "series": 4,
+                            "series": 3,
                             "reps": "Cada pierna 1 vez",
                             "weight": "",
                             "pause": "30''",
@@ -110,7 +110,7 @@
                             "id": 11,
                             "title": "Floor Press en Puente en 1 Pierna y 1 Brazo Hace Press",
                             "series": 4,
-                            "reps": "7-7",
+                            "reps": "6-6",
                             "weight": "15",
                             "pause": "1'"
                         },
@@ -118,7 +118,7 @@
                             "id": 12,
                             "title": "Swing Ruso Pesado",
                             "series": 4,
-                            "reps": "15",
+                            "reps": "12",
                             "weight": "",
                             "description": "Buscar esfuerzo 4"
                         },
@@ -126,7 +126,7 @@
                             "id": 13,
                             "title": "Sentadilla en banco 1P con Pelota",
                             "series": 4,
-                            "reps": "7-7",
+                            "reps": "6-6",
                             "weight": "9",
                             "pause": "",
                             "description": "Buscar esfuerzo 4, usar KB"
@@ -135,7 +135,7 @@
                             "id": 14,
                             "title": "Remo Invertido Rack",
                             "series": 4,
-                            "reps": "15",
+                            "reps": "12",
                             "weight": ""
                         }
                     ]
