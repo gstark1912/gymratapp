@@ -2,34 +2,50 @@
     <div class="toolbar">
         <el-avatar :size="40"
             src='https://t4.ftcdn.net/jpg/07/04/95/71/360_F_704957132_fed1XncFqXDPP52rd8A7Ci03uHG0L8yl.jpg' />
-        <el-text v-if="user" class="toolbar-text" size="large">Hola {{ user.email }} 👋</el-text>
-
+        <div v-if="user.email !== ''">
+            <el-text class="toolbar-text" size="large">Hola {{ user.email }}</el-text>
+            <el-button type="primary" @click="logOff()" :icon="UserFilled" circle></el-button>
+            <el-button type="danger" @click="logOff()" :icon="SwitchButton" circle></el-button>
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import { UserFilled, SwitchButton } from '@element-plus/icons-vue'
+import { navigateTo } from 'nuxt/app';
 
-let user = ref({});
 const authStore = useAuthStore();
+const { logOffUser } = authStore;
+const { currentUser } = storeToRefs(authStore);
 
-const { getCurrentUser } = authStore;
+let user = ref({
+    email: ""
+});
 
-onMounted(async () => {
-    let currentUser = await getCurrentUser();
-    if (currentUser) {
-        user.value = currentUser;
+watchEffect(() => {
+    if (currentUser.value)
+        user.value = currentUser.value;
+    else {
+        user.value = {
+            email: ""
+        }
     }
 });
+
+const logOff = async () => {
+    await logOffUser();
+    navigateTo('/login');
+}
 
 </script>
 
 <style scoped>
 .toolbar {
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: space-between;
     width: 100%;
-    padding: 10px;
+    margin: 10px;
     background-color: snow;
 }
 
@@ -39,5 +55,6 @@ onMounted(async () => {
     flex-grow: 1;
     text-align: right;
     padding-right: 20px;
+    vertical-align: middle;
 }
 </style>
