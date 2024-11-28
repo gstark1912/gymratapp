@@ -233,10 +233,10 @@
                 {
                     "id": 4,
                     "title": "INM",
-                    "description": "20''x10''",
+                    "description": "15''x10''",
                     "type": "tabata",
                     "series": 3,
-                    "round": 4,
+                    "round": 2,
                     "workTime": "20''",
                     "excercises": [
                         {
@@ -334,7 +334,7 @@
                             "title": "Banco Plano 2 MC",
                             "series": 5,
                             "reps": "12",
-                            "weight": "22-22",
+                            "weight": "20-20",
                             "pause": "1'30''"
                         },
                         {
@@ -342,7 +342,7 @@
                             "title": "Remo Polea Baja Casita",
                             "series": 5,
                             "reps": "15",
-                            "weight": "60",
+                            "weight": "40",
                             "pause": "1'30''"
                         }
                     ]
@@ -350,14 +350,14 @@
                 {
                     "id": 4,
                     "title": "Fuerza Full Body Core",
-                    "description": "5 series",
+                    "description": "4 series",
                     "type": "circuito",
                     "excercises": [
                         {
                             "id": 9,
                             "title": "Lanzamiento MB 1 Brazo a la Pared",
                             "series": 4,
-                            "reps": "9-9",
+                            "reps": "6-6",
                             "weight": "9-12",
                             "pause": "1'"
                         },
