@@ -2,7 +2,7 @@ import type { RoutineDay } from "./routineDay.type";
 
 export interface Routine {
     title: string,
-    id: number,
+    id: string,
     name: string,
     numberOfDays: number,
     routineDays: RoutineDay[]

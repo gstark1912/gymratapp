@@ -11,5 +11,6 @@ export interface RoutineStep {
     excerciseRef: string;
     loadContext: LoadContext;
     order: number;
-    excercises?: RoutineStep[]
+    excercises?: RoutineStep[],
+    userId: string
 }

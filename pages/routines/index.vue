@@ -13,7 +13,7 @@
                         </div>
                     </template>
                     <el-row>
-                        <el-col :span="8" v-for="index in Array.from({ length: d.numberOfDays }, (_, i) => i)"
+                        <el-col :span="8" v-for="index in Array.from({ length: d.numberOfDays }, (_, i) => i + 1)"
                             :key="index">
                             <NuxtLink :to="`/routines/${d.id}/day/${index}`">
                                 <el-button type="primary" plain>
