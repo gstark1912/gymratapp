@@ -8,6 +8,12 @@
   align-items: center;
   height: 100%;
 }
+
+.bordered {
+  border-width: 1px;
+  border-style: dashed;
+  border-color: #475669;
+}
 </style>
 
 <template>

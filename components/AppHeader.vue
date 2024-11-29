@@ -12,13 +12,14 @@
 
 <script setup lang="ts">
 import { UserFilled, SwitchButton } from '@element-plus/icons-vue'
+import type { User } from 'firebase/auth';
 import { navigateTo } from 'nuxt/app';
 
 const authStore = useAuthStore();
 const { logOffUser } = authStore;
 const { currentUser } = storeToRefs(authStore);
 
-let user = ref({
+let user = ref<Partial<User>>({
     email: ""
 });
 

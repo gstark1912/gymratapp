@@ -24,18 +24,18 @@ import type { RoutineStep } from '~/interface/routineStep.type';
 
 const route = useRoute();
 const routineId = ref('');
-const dayIndex = ref(0);
+const dayIndex = ref('');
 
 const { getRoutineById, getRoutineStepsByRoutineIdAndDay } = useRoutinesStore();
-const routine: Routine = reactive({});
-const routineSteps: RoutineStep[] = ref<RoutineStep[]>([]);
+const routine = ref<Partial<Routine>>({});
+const routineSteps = ref<RoutineStep[]>([]);
 
 onMounted(async () => {
-    routineId.value = route.params.routineId;
-    dayIndex.value = route.params.dayId;
+    routineId.value = route.params.routineId.toString();
+    dayIndex.value = route.params.dayId.toString();
 
-    routine.value = await getRoutineById(routineId.value);
-    routineSteps.value = await getRoutineStepsByRoutineIdAndDay(routineId.value, dayIndex.value);
+    routine.value = await getRoutineById(routineId.value) as Routine;
+    routineSteps.value = await getRoutineStepsByRoutineIdAndDay(routineId.value, dayIndex.value) as RoutineStep[];
 });
 
 </script>

@@ -11,7 +11,7 @@ export const useRoutinesStore = defineStore('routine', () => {
     const authStore = useAuthStore();
     const { currentUser } = storeToRefs(authStore);
 
-    const routine: Routine = reactive({
+    const routine: Partial<Routine> = reactive({
         title: '',
         id: '',
         routineDays: []
@@ -37,7 +37,7 @@ export const useRoutinesStore = defineStore('routine', () => {
         routines.value = querySnapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
-        }));
+        })) as Routine[];
 
         return routines.value;
     }
@@ -57,7 +57,7 @@ export const useRoutinesStore = defineStore('routine', () => {
         });
     }
 
-    const getRoutineStepsByRoutineIdAndDay = async (rId: string, dayId: number) => {
+    const getRoutineStepsByRoutineIdAndDay = async (rId: string, dayId: string) => {
         if (!currentUser.value) {
             return [];
         }
@@ -73,7 +73,7 @@ export const useRoutinesStore = defineStore('routine', () => {
         const querySnapshot = await getDocs(q);
 
         // Mapea los documentos a un array de objetos
-        let steps: RoutineStep[] = querySnapshot.docs.map((doc) => ({
+        let steps = querySnapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
         }));
@@ -113,7 +113,7 @@ export const useRoutinesStore = defineStore('routine', () => {
         if (routine.id == '')
             loadRoutineData();
 
-        return routine.routineDays.find(obj => obj.id === idDay);
+        return routine.routineDays?.find(obj => obj.id === idDay);
     };
 
     return {
