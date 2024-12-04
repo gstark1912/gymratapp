@@ -10,11 +10,13 @@
             <div v-if="step.type == RoutineStepType.Individual">
                 <RoutineStepCard v-for="(e, index) in step.excercises" :key="index" :routine-step="e" />
             </div>
-            <div v-else-if="(step.type == RoutineStepType.Circuit || step.type == RoutineStepType.WarmUp)">
+            <div class="excercises"
+                v-else="(step.type == RoutineStepType.Circuit || step.type == RoutineStepType.WarmUp)">
                 <el-timeline style="max-width: 600px; text-align: left">
                     <el-timeline-item v-for="(e, index) in step.excercises" :key="index">
                         <p>{{ e.name }}</p>
                         <RoutineStepLoadContext v-if="e.loadContext" :step="e" />
+                        <em v-else-if="e.description">✍️ {{ e.description }}</em>
                     </el-timeline-item>
                 </el-timeline>
             </div>
