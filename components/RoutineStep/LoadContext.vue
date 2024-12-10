@@ -23,7 +23,9 @@
         </el-col>
         <el-col :span="spanNumber" v-if="props.feedback">
             <p></p>
-            <el-button type="info" @click="feedback" :icon="Operation" circle></el-button>
+            <el-button v-if="!props.step.isReadyToComplete" type="info" @click="completeLoadContext" :icon="Operation"
+                circle></el-button>
+            <el-button v-else="props.step.isReadyToComplete" type="success" :icon="Check" circle></el-button>
         </el-col>
     </el-row>
     <el-row v-if="step.description">
@@ -36,7 +38,8 @@
 
 <script setup lang="ts">
 import type { RoutineStep } from '~/interface/routineStep.type';
-import { Operation } from '@element-plus/icons-vue'
+import { Operation, Check } from '@element-plus/icons-vue'
+import { ElMessage } from 'element-plus'
 
 const props = defineProps<{
     step: Partial<RoutineStep>,
@@ -62,10 +65,28 @@ onMounted(() => {
             propCount++;
 
         spanNumber.value = 24 / propCount
+
+        props.step.isReadyToComplete = false;
     }
 });
 
-const feedback = () => {
+const completeLoadContext = () => {
+    let result = true;
+    if (props.step.excercises) {
+        props.step.excercises.forEach((v, i) => {
+            if (v.isReadyToComplete === false) {
+                ElMessage({
+                    message: v.name + ' no tiene la carga completada.',
+                    type: 'warning',
+                });
+                result = false;
+            }
+        })
+    }
+
+    if (!result)
+        return;
+
     props.step.isReadyToComplete = true;
 };
 

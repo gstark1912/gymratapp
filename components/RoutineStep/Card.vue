@@ -40,7 +40,10 @@ const props = defineProps<{
 onMounted(async () => {
     step.value = props.routineStep;
     enableStepFeedback.value = props.mode === 'train';
+    step.value.isReadyToComplete = false;
 });
+
+
 
 </script>
 
@@ -62,5 +65,9 @@ onMounted(async () => {
     line-height: 50px;
     margin: 0;
     text-align: center;
+}
+
+.el-timeline {
+    --el-timeline-node-color: var(--el-color-success);
 }
 </style>

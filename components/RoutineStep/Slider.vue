@@ -7,10 +7,9 @@
             </el-carousel-item>
         </el-carousel>
         <div v-if="props.mode === 'train'" style="text-align: center">
+            <el-button type="danger" @click="failStep" :disabled="completeEnabled">No lo hice</el-button>
             <el-button type="success" @click="completeStep" :disabled="!completeEnabled">Completar</el-button>
-            <el-button type="danger" @click="failStep">No lo hice</el-button>
             <el-divider />
-            Value:{{ completeEnabled }}
         </div>
         <div v-else style="text-align: center">
             <el-button @click="prevSlide">Anterior</el-button>
@@ -38,7 +37,8 @@ const props = defineProps<{
 
 onMounted(async () => {
     routineSteps.value = ((await getRoutineStepsByRoutineIdAndDay(props.routineId, props.dayIndex)) as RoutineStep[])
-        .sort((a, b) => a.order - b.order);
+        .sort((a, b) => a.order - b.order)
+        .map((step) => reactive(step));
 
     stepCount.value = routineSteps.value.length;
 });
@@ -59,16 +59,15 @@ const prevSlide = () => {
 };
 
 const completeEnabled = computed(() => {
-    return true;
-    if (!carouselRef.value)
-        return false;
-    var step = routineSteps.value.at(carouselRef.value.activeIndex)
-    if (step.value) {
-        debugger;
-        return step.value.isReadyToComplete;
-    }
-    else
-        return false;
+    if (!carouselRef.value) return false;
+
+    const step = routineSteps.value.at(carouselRef.value.activeIndex);
+
+    // Si el paso actual no existe, retorna false
+    if (!step) return false;
+
+    // Vue rastreará correctamente `step.isReadyToComplete`
+    return step.isReadyToComplete;
 });
 
 const completeStep = () => {
