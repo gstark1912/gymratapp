@@ -4,7 +4,7 @@
             {{ step.name }}
         </h4>
         <el-image class="card-image" :src="src" fit="contain" />
-        <RoutineStepLoadContext v-if="step.loadContext" :step="step" />
+        <RoutineStepLoadContext v-if="step.loadContext" :step="step" :feedback="enableStepFeedback" />
         <div v-if="step.excercises">
             <el-divider />
             <div v-if="step.type == RoutineStepType.Individual">
@@ -15,7 +15,7 @@
                 <el-timeline style="max-width: 600px; text-align: left">
                     <el-timeline-item v-for="(e, index) in step.excercises" :key="index">
                         <p>{{ e.name }}</p>
-                        <RoutineStepLoadContext v-if="e.loadContext" :step="e" />
+                        <RoutineStepLoadContext v-if="e.loadContext" :step="e" :feedback="enableStepFeedback" />
                         <em v-else-if="e.description">✍️ {{ e.description }}</em>
                     </el-timeline-item>
                 </el-timeline>
@@ -30,13 +30,16 @@ import type { RoutineStep } from '~/interface/routineStep.type';
 import { RoutineStepType } from '~/interface/routineStepType.enum';
 
 const step = ref<Partial<RoutineStep>>({});
+const enableStepFeedback = ref(false);
 const src = ref('https://thumbs.dreamstime.com/b/cat-gym-fitness-workout-set-illustration-cute-minimalist-doodle-vector-exercise-themed-designs-playful-features-cats-342273270.jpg');
 const props = defineProps<{
-    routineStep: RoutineStep
+    routineStep: RoutineStep,
+    mode?: string | null
 }>();
 
 onMounted(async () => {
     step.value = props.routineStep;
+    enableStepFeedback.value = props.mode === 'train';
 });
 
 </script>

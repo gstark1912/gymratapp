@@ -11,6 +11,9 @@ export interface RoutineStep {
     excerciseRef: string;
     loadContext: LoadContext;
     order: number;
-    excercises?: RoutineStep[],
-    userId: string
+    excercises?: RoutineStep[];
+    userId: string;
+
+    // UX needed properties
+    isReadyToComplete: boolean;
 }

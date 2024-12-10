@@ -8,4 +8,7 @@ export interface LoadContext {
 
     rounds: number[];
     restRound: number;
+
+    // UX needed properties
+    isReadyToComplete: boolean;
 }

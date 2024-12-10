@@ -21,6 +21,10 @@
         <el-col :span="spanNumber" v-if="step.loadContext.restBetweenSeries">
             <el-statistic title="Rest" :value="step.loadContext.restBetweenSeries" suffix="''" />
         </el-col>
+        <el-col :span="spanNumber" v-if="props.feedback">
+            <p></p>
+            <el-button type="info" @click="feedback" :icon="Operation" circle></el-button>
+        </el-col>
     </el-row>
     <el-row v-if="step.description">
         <el-divider />
@@ -32,9 +36,11 @@
 
 <script setup lang="ts">
 import type { RoutineStep } from '~/interface/routineStep.type';
+import { Operation } from '@element-plus/icons-vue'
 
 const props = defineProps<{
-    step: Partial<RoutineStep>
+    step: Partial<RoutineStep>,
+    feedback: boolean
 }>();
 
 const spanNumber = ref(0);
@@ -48,9 +54,20 @@ const loadContextKeys = [
 ];
 
 onMounted(() => {
-    if (props.step.loadContext)
-        spanNumber.value = 24 / loadContextKeys.filter(key => props.step.loadContext[key]).length;
+
+    if (props.step.loadContext) {
+        let propCount = loadContextKeys.filter(key => props.step.loadContext[key]).length;;
+
+        if (props.feedback)
+            propCount++;
+
+        spanNumber.value = 24 / propCount
+    }
 });
+
+const feedback = () => {
+    props.step.isReadyToComplete = true;
+};
 
 </script>
 

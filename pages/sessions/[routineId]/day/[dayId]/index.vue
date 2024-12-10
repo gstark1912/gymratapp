@@ -1,11 +1,9 @@
 <template>
     <div>
-        <h2>Routine: {{ routine.name }}</h2>
-        <h3>Día: {{ dayIndex }}</h3>
-        <RoutineStepSlider v-if="routine.id" :routineId="routine.id" :dayIndex="dayIndex" />
+        <h2>ARRANCA EL ENTRENAMIENTO</h2>
+        <RoutineStepSlider v-if="routine.id" :routineId="routine.id" :dayIndex="dayIndex" mode="train" />
         <el-divider />
         <el-button @click="back" type="info">Volver</el-button>
-        <el-button @click="start" type="success">Entrenar</el-button>
     </div>
 </template>
 
@@ -32,11 +30,7 @@ onMounted(async () => {
 });
 
 const back = () => {
-    navigateTo('/routines');
-}
-
-const start = () => {
-    navigateTo('/sessions/' + routineId.value + '/day/' + dayIndex.value);
+    navigateTo('/routines/' + routineId.value + '/day/' + dayIndex.value);
 }
 
 </script>
