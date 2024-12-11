@@ -1,5 +1,5 @@
 <template>
-    <el-row v-if="step.loadContext">
+    <el-row v-if="step.loadContext" justify="end">
         <el-col :span="12" v-if="step.loadContext.rounds">
             <el-statistic title="Rounds" :value="step.loadContext.rounds[0]" />
         </el-col>
@@ -21,7 +21,7 @@
         <el-col :span="spanNumber" v-if="step.loadContext.restBetweenSeries">
             <el-statistic title="Rest" :value="step.loadContext.restBetweenSeries" suffix="''" />
         </el-col>
-        <el-col :span="spanNumber" v-if="props.feedback">
+        <el-col :span="6" v-if="props.feedback">
             <p></p>
             <el-button v-if="!props.step.isReadyToComplete" type="info" @click="completeLoadContext" :icon="Operation"
                 circle></el-button>
@@ -61,11 +61,7 @@ onMounted(() => {
     if (props.step.loadContext) {
         let propCount = loadContextKeys.filter(key => props.step.loadContext[key]).length;;
 
-        if (props.feedback)
-            propCount++;
-
-        spanNumber.value = 24 / propCount
-
+        spanNumber.value = Math.floor(18 / propCount);
         props.step.isReadyToComplete = false;
     }
 });

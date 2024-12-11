@@ -1,19 +1,20 @@
 <template>
     <div class="routineStepCard">
         <h4 justify="center">
-            {{ step.name }}
+            {{ props.routineStep.name }}
         </h4>
         <el-image class="card-image" :src="src" fit="contain" />
-        <RoutineStepLoadContext v-if="step.loadContext" :step="step" :feedback="enableStepFeedback" />
-        <div v-if="step.excercises">
+        <RoutineStepLoadContext v-if="props.routineStep.loadContext" :step="props.routineStep"
+            :feedback="enableStepFeedback" />
+        <div v-if="props.routineStep.excercises">
             <el-divider />
-            <div v-if="step.type == RoutineStepType.Individual">
-                <RoutineStepCard v-for="(e, index) in step.excercises" :key="index" :routine-step="e" />
+            <div v-if="props.routineStep.type == RoutineStepType.Individual">
+                <RoutineStepCard v-for="(e, index) in props.routineStep.excercises" :key="index" :routine-step="e" />
             </div>
             <div class="excercises"
                 v-else="(step.type == RoutineStepType.Circuit || step.type == RoutineStepType.WarmUp)">
                 <el-timeline style="max-width: 600px; text-align: left">
-                    <el-timeline-item v-for="(e, index) in step.excercises" :key="index">
+                    <el-timeline-item v-for="(e, index) in props.routineStep.excercises" :key="index">
                         <p>{{ e.name }}</p>
                         <RoutineStepLoadContext v-if="e.loadContext" :step="e" :feedback="enableStepFeedback" />
                         <em v-else-if="e.description">✍️ {{ e.description }}</em>
@@ -29,7 +30,6 @@ import { onMounted, ref } from 'vue';
 import type { RoutineStep } from '~/interface/routineStep.type';
 import { RoutineStepType } from '~/interface/routineStepType.enum';
 
-const step = ref<Partial<RoutineStep>>({});
 const enableStepFeedback = ref(false);
 const src = ref('https://thumbs.dreamstime.com/b/cat-gym-fitness-workout-set-illustration-cute-minimalist-doodle-vector-exercise-themed-designs-playful-features-cats-342273270.jpg');
 const props = defineProps<{
@@ -38,9 +38,8 @@ const props = defineProps<{
 }>();
 
 onMounted(async () => {
-    step.value = props.routineStep;
     enableStepFeedback.value = props.mode === 'train';
-    step.value.isReadyToComplete = false;
+    props.routineStep.isReadyToComplete = false;
 });
 
 

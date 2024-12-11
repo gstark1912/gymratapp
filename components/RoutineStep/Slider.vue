@@ -1,8 +1,8 @@
 <template>
-    <div v-if="routineSteps.length > 0">
+    <div v-if="computedSteps.length > 0">
         <el-carousel trigger="click" :loop="false" indicator-position="none" height="auto" :autoplay="false"
             direction="vertical" ref="carouselRef">
-            <el-carousel-item v-for="d in routineSteps" :key="d.id" style="height: auto">
+            <el-carousel-item v-for="d in computedSteps" :key="d.id" style="height: auto">
                 <RoutineStepCard :routineStep="d" :mode="props.mode" />
             </el-carousel-item>
         </el-carousel>
@@ -25,26 +25,17 @@
 import { onMounted, ref } from 'vue';
 import type { RoutineStep } from '~/interface/routineStep.type';
 
-const { getRoutineStepsByRoutineIdAndDay } = useRoutinesStore();
-const routineSteps = ref<RoutineStep[]>([]);
 const stepCount = ref(0);
-
 const props = defineProps<{
-    routineId: string,
-    dayIndex: string,
+    steps: RoutineStep[]
     mode?: string | null
 }>();
 
 onMounted(async () => {
-    routineSteps.value = ((await getRoutineStepsByRoutineIdAndDay(props.routineId, props.dayIndex)) as RoutineStep[])
-        .sort((a, b) => a.order - b.order)
-        .map((step) => reactive(step));
-
-    stepCount.value = routineSteps.value.length;
+    stepCount.value = props.steps.length;
 });
 
 const carouselRef = ref<any>(null);
-const buttonCompleteRef = ref<any>(null);
 const nextSlide = () => {
     if (carouselRef.value) {
         carouselRef.value.next();
@@ -58,32 +49,59 @@ const prevSlide = () => {
     }
 };
 
+const computedSteps = computed(() => {
+    return props.steps.filter(step => step.isSkip !== true && step.isCompleted !== true)
+        .sort((a, b) => a.order - b.order);
+})
+
 const completeEnabled = computed(() => {
     if (!carouselRef.value) return false;
 
-    const step = routineSteps.value.at(carouselRef.value.activeIndex);
+    const step = computedSteps.value.at(carouselRef.value.activeIndex);
 
-    // Si el paso actual no existe, retorna false
     if (!step) return false;
 
-    // Vue rastreará correctamente `step.isReadyToComplete`
     return step.isReadyToComplete;
 });
 
 const completeStep = () => {
+    let step = computedSteps.value.at(carouselRef.value.activeIndex);
+    console.log('Completado ' + step?.name);
+    if (step)
+        step.isCompleted = true;
+
+    stepCount.value--;
     nextOrComplete();
 }
 
 const failStep = () => {
-    routineSteps.value = routineSteps.value.filter(step => step.id !== routineSteps.value.at(carouselRef.value.activeIndex)?.id);
+    let step = computedSteps.value.at(carouselRef.value.activeIndex);
+    console.log('Fallado ' + step?.name);
+    if (step)
+        step.isSkip = true;
+
     stepCount.value--;
     nextOrComplete();
 }
 
 const nextOrComplete = () => {
-    if ((carouselRef.value.activeIndex + 1) !== stepCount.value)
+    if ((carouselRef.value.activeIndex) !== stepCount.value) {
         nextSlide();
+    }
+    // Todo completado
+    else {
+        ElMessage({
+            message: 'Todo listo!',
+            type: 'info',
+        });
+        emit("readyToSaveSession");
+    }
+
+    console.log(computedSteps.value);
 }
+const emit = defineEmits<{
+    (event: "readyToSaveSession"): void;
+}>();
 
 </script>
 

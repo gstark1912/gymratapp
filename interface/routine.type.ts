@@ -1,8 +1,8 @@
+import type { FirebaseModel } from "./firebaseModel.type";
 import type { RoutineDay } from "./routineDay.type";
 
-export interface Routine {
+export interface Routine extends FirebaseModel {
     title: string,
-    id: string,
     name: string,
     numberOfDays: number,
     routineDays: RoutineDay[]

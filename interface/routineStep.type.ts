@@ -1,8 +1,8 @@
+import type { FirebaseModel } from "./firebaseModel.type";
 import type { LoadContext } from "./loadContext.type";
 import type { RoutineStepType } from "./routineStepType.enum";
 
-export interface RoutineStep {
-    id: string;
+export interface RoutineStep extends FirebaseModel {
     routineId: string;
     dayId: string;
     name: string;
@@ -12,8 +12,9 @@ export interface RoutineStep {
     loadContext: LoadContext;
     order: number;
     excercises?: RoutineStep[];
-    userId: string;
 
     // UX needed properties
     isReadyToComplete: boolean;
+    isSkip: boolean;
+    isCompleted: boolean;
 }
