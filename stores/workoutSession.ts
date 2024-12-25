@@ -1,7 +1,8 @@
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, writeBatch } from "firebase/firestore";
 import type { Routine } from "~/interface/routine.type";
 import type { RoutineStep } from "~/interface/routineStep.type";
 import type { WorkoutSession } from "~/interface/workoutSession.type";
+import type { WorkoutSessionStep } from "~/interface/workoutSessionStep.type";
 
 export const useWorkoutSessionStore = defineStore('workoutSession', () => {
     const { $firestore } = useNuxtApp();
@@ -35,9 +36,77 @@ export const useWorkoutSessionStore = defineStore('workoutSession', () => {
 
         try {
             obj.userId = currentUser.value.uid;
-
+            const loadingInstance1 = ElLoading.service({ fullscreen: true });
             const routineCollection = collection($firestore, "workoutSession");
             const docRef = await addDoc(routineCollection, obj);
+            const result = await saveWorkoutSessionSteps(docRef.id);
+
+            if (!result) {
+                // Si el resultado es falso, elimina el documento recién creado
+                await deleteDoc(doc($firestore, "workoutSession", docRef.id));
+                console.error("Documento eliminado debido a un resultado fallido.");
+            }
+            loadingInstance1.close();
+        } catch (error) {
+            console.error("Error adding document:", error);
+            return false;
+        }
+
+        return true;
+    }
+
+    const saveWorkoutSessionSteps = async (id: string) => {
+        try {
+            let objs = routineSteps.value.map((item) => {
+                return {
+                    dayId: item.dayId,
+                    excerciseRef: item.excerciseRef,
+                    routineStepId: item.id,
+                    isSkip: item.isSkip,
+                    loadContext: item.loadContext,
+                    name: item.name,
+                    routineId: item.routineId,
+                    userId: item.userId,
+                    workoutSessionId: id,
+                    excercises: item.excercises?.map((exercise) => ({
+                        dayId: exercise.dayId,
+                        excerciseRef: exercise.excerciseRef,
+                        routineStepId: exercise.id,
+                        isSkip: exercise.isSkip,
+                        loadContext: exercise.loadContext,
+                        name: exercise.name,
+                        routineId: exercise.routineId,
+                        userId: exercise.userId,
+                        workoutSessionId: id,
+                    })),
+                }
+            }) as WorkoutSessionStep[];
+            const batch = writeBatch($firestore);
+            const collectionRef = collection($firestore, "workoutSessionStep");
+
+            objs.forEach((docData) => {
+                const cleanedDoc = Object.fromEntries(
+                    Object.entries(docData).filter(([_, value]) => value !== undefined)
+                );
+
+                if (cleanedDoc.excercises && Array.isArray(cleanedDoc.excercises)) {
+                    cleanedDoc.excercises = cleanedDoc.excercises.map((exercise) =>
+                        Object.fromEntries(
+                            Object.entries(exercise).filter(([_, value]) => value !== undefined)
+                        )
+                    );
+                }
+
+                const docRef = doc(collectionRef); // Crea un nuevo documento con un ID único
+                batch.set(docRef, cleanedDoc); // Agrega la operación al batch
+            });
+
+            try {
+                await batch.commit(); // Envía todas las operaciones a Firestore
+                console.log("Todos los documentos fueron agregados exitosamente");
+            } catch (error) {
+                console.error("Error al agregar los documentos: ", error);
+            }
         } catch (error) {
             console.error("Error adding document:", error);
             return false;

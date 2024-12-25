@@ -2,7 +2,6 @@
     <div>
         <h2>Routine: {{ routine.name }}</h2>
         <h3>Día: {{ dayIndex }}</h3>
-        <RoutineStepSlider v-if="routine.id" :routineId="routine.id" :dayIndex="dayIndex" />
         <el-divider />
         <el-button @click="back" type="info">Volver</el-button>
         <el-button @click="start" type="success">Entrenar</el-button>

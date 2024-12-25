@@ -20,6 +20,7 @@ export const useRoutinesStore = defineStore('routine', () => {
     const routines = ref<Routine[]>([]);
 
     const getRoutines = async () => {
+        const loadingInstance1 = ElLoading.service({ fullscreen: true });
         if (!currentUser.value) {
             routines.value = [];
             return [];
@@ -39,12 +40,14 @@ export const useRoutinesStore = defineStore('routine', () => {
             ...doc.data(),
         })) as Routine[];
 
+        loadingInstance1.close();
         return routines.value;
     }
 
     const getRoutineById = async (routineId: string) => {
         return new Promise(async (resolve, reject) => {
 
+            const loadingInstance1 = ElLoading.service({ fullscreen: true });
             if (routines.value.length === 0)
                 await getRoutines();
 
@@ -54,6 +57,7 @@ export const useRoutinesStore = defineStore('routine', () => {
             } else {
                 reject(new Error(`Routine with ID ${routineId} not found`));
             }
+            loadingInstance1.close();
         });
     }
 
@@ -61,6 +65,7 @@ export const useRoutinesStore = defineStore('routine', () => {
         if (!currentUser.value) {
             return [];
         }
+        const loadingInstance1 = ElLoading.service({ fullscreen: true });
         const routineCollection = collection($firestore, "routineStep");
 
         const q = query(
@@ -77,7 +82,7 @@ export const useRoutinesStore = defineStore('routine', () => {
             id: doc.id,
             ...doc.data(),
         }));
-
+        loadingInstance1.close();
         return steps;
     }
 
@@ -86,6 +91,7 @@ export const useRoutinesStore = defineStore('routine', () => {
             return false;
         }
 
+        const loadingInstance1 = ElLoading.service({ fullscreen: true });
         try {
             obj.userId = currentUser.value.uid;
 
@@ -96,7 +102,7 @@ export const useRoutinesStore = defineStore('routine', () => {
             console.error("Error adding document:", error);
             return false;
         }
-
+        loadingInstance1.close();
         return true;
     }
 

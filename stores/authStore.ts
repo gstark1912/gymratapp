@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import { onAuthStateChanged, signOut, updateProfile } from 'firebase/auth';
 import type { User } from 'firebase/auth';
+import { ElLoading } from 'element-plus'
 
 export const useAuthStore = defineStore('auth', () => {
     const currentUser = ref<User | null>(null);
@@ -18,7 +19,7 @@ export const useAuthStore = defineStore('auth', () => {
     const getCurrentUser = () => {
         return new Promise((resolve, reject) => {
             try {
-
+                const loadingInstance1 = ElLoading.service({ fullscreen: true });
                 const unsubscribe =
                     onAuthStateChanged($auth, (user) => {
                         try {
@@ -36,6 +37,7 @@ export const useAuthStore = defineStore('auth', () => {
                             console.log('Error al manejar el estado de autenticación:', error);
                         }
                     }, e => reject(e));
+                loadingInstance1.close();
 
             } catch (error) {
                 console.log(error);
@@ -45,20 +47,22 @@ export const useAuthStore = defineStore('auth', () => {
 
     const updateUserProfile = async (user, displayName, photoURL) => {
         try {
+            const loadingInstance1 = ElLoading.service({ fullscreen: true });
             await updateProfile(user, {
                 displayName,
                 photoURL
             });
-            debugger;
             if (currentUser.value) {
                 Object.assign(currentUser.value, { displayName, photoURL });
             }
+            loadingInstance1.close();
         } catch (error) {
             console.error("Error al actualizar el perfil:", error);
         }
     };
 
     const logOffUser = async () => {
+        const loadingInstance1 = ElLoading.service({ fullscreen: true });
         await signOut($auth)
             .then(() => {
                 currentUser.value = null;
@@ -67,6 +71,7 @@ export const useAuthStore = defineStore('auth', () => {
             .catch((error) => {
                 console.log(error);
             });
+        loadingInstance1.close();
     };
 
     return {
