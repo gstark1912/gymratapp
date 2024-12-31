@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, writeBatch } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, limit, orderBy, query, startAfter, where, writeBatch } from "firebase/firestore";
 import type { Routine } from "~/interface/routine.type";
 import type { RoutineStep } from "~/interface/routineStep.type";
 import type { WorkoutSession } from "~/interface/workoutSession.type";
@@ -53,7 +53,7 @@ export const useWorkoutSessionStore = defineStore('workoutSession', () => {
         }
 
         return true;
-    }
+    };
 
     const saveWorkoutSessionSteps = async (id: string) => {
         try {
@@ -113,11 +113,44 @@ export const useWorkoutSessionStore = defineStore('workoutSession', () => {
         }
 
         return true;
-    }
+    };
+
+    const getSessions = async (lastVisibleDoc: any = null) => {
+        if (!currentUser.value) {
+            return [];
+        };
+
+        const loadingInstance1 = ElLoading.service({ fullscreen: true });
+        const routineCollection = collection($firestore, "workoutSession");
+
+        let q = query(
+            routineCollection,
+            where("userId", "==", currentUser.value?.uid),
+            orderBy("dateTime", "desc"),
+            limit(5)
+        );
+
+        if (lastVisibleDoc) {
+            q = query(q, startAfter(lastVisibleDoc));
+        };
+
+        // Ejecuta la query y obtiene los documentos
+        const querySnapshot = await getDocs(q);
+
+        // Mapea los documentos a un array de objetos
+        let sessions: WorkoutSession[] = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            dateTime: doc.data().dateTime.toDate(),
+            ...doc.data() as WorkoutSession, // Aseguramos que los datos tengan el tipo esperado
+        }));
+        loadingInstance1.close();
+        return sessions;
+    };
 
     return {
         createWorkoutSession,
         startWorkoutSession,
+        getSessions,
         session,
         routineSteps
     };
