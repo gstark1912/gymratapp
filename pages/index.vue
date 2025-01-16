@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-navigateTo('/routines');
+navigateTo('/sessions');
 </script>
 
 <style scoped>

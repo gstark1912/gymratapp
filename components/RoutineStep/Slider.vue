@@ -3,7 +3,8 @@
         <el-carousel trigger="click" :loop="false" indicator-position="none" height="auto" :autoplay="false"
             direction="vertical" ref="carouselRef">
             <el-carousel-item v-for="d in computedSteps" :key="d.id" style="height: auto">
-                <RoutineStepCard :routineStep="d" :mode="props.mode" />
+                <RoutineStepCard :routineStep="d" :mode="props.mode"
+                    @openLoadContextFeedback="openLoadContextFeedback" />
             </el-carousel-item>
         </el-carousel>
         <div v-if="props.mode === 'train'" style="text-align: center">
@@ -19,10 +20,14 @@
             </p>
         </div>
     </div>
+
+    <RoutineStepLoadContextFeedback v-model:dialogFormVisible=dialogFormVisible
+        v-model:loadContext="dialogLoadContext" />
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import type { LoadContext } from '~/interface/loadContext.type';
 import type { RoutineStep } from '~/interface/routineStep.type';
 
 const stepCount = ref(0);
@@ -99,9 +104,18 @@ const nextOrComplete = () => {
 
     console.log(computedSteps.value);
 }
+
 const emit = defineEmits<{
     (event: "readyToSaveSession"): void;
 }>();
+
+const dialogFormVisible = ref(false);
+const dialogLoadContext = ref<Partial<LoadContext> | undefined>(undefined);
+const openLoadContextFeedback = (loadContext: LoadContext) => {
+    console.log("Slider");
+    dialogFormVisible.value = !dialogFormVisible.value;
+    dialogLoadContext.value = loadContext;
+}
 
 </script>
 

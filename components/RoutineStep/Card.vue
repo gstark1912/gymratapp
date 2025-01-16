@@ -5,7 +5,8 @@
         </h4>
         <el-image class="card-image" :src="src" fit="contain" />
         <RoutineStepLoadContext v-if="props.routineStep.loadContext" :step="props.routineStep"
-            :feedback="enableStepFeedback" />
+            :feedback="enableStepFeedback"
+            @openLoadContextFeedback="openLoadContextFeedback(props.routineStep.loadContext)" />
         <div v-if="props.routineStep.excercises">
             <el-divider />
             <div v-if="props.routineStep.type == RoutineStepType.Individual">
@@ -16,7 +17,8 @@
                 <el-timeline style="max-width: 600px; text-align: left">
                     <el-timeline-item v-for="(e, index) in props.routineStep.excercises" :key="index">
                         <p>{{ e.name }}</p>
-                        <RoutineStepLoadContext v-if="e.loadContext" :step="e" :feedback="enableStepFeedback" />
+                        <RoutineStepLoadContext v-if="e.loadContext" :step="e" :feedback="enableStepFeedback"
+                            @openLoadContextFeedback="openLoadContextFeedback(e.loadContext)" />
                         <em v-else-if="e.description">✍️ {{ e.description }}</em>
                     </el-timeline-item>
                 </el-timeline>
@@ -27,6 +29,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import type { LoadContext } from '~/interface/loadContext.type';
 import type { RoutineStep } from '~/interface/routineStep.type';
 import { RoutineStepType } from '~/interface/routineStepType.enum';
 
@@ -42,7 +45,14 @@ onMounted(async () => {
     props.routineStep.isReadyToComplete = false;
 });
 
+const emit = defineEmits<{
+    (event: 'openLoadContextFeedback', loadContext: LoadContext): void;
+}>();
 
+const openLoadContextFeedback = (loadContext: LoadContext) => {
+    console.log("Card");
+    emit('openLoadContextFeedback', loadContext);
+}
 
 </script>
 

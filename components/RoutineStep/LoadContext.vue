@@ -25,7 +25,8 @@
             <p></p>
             <el-button v-if="!props.step.isReadyToComplete" type="info" @click="completeLoadContext" :icon="Operation"
                 circle></el-button>
-            <el-button v-else="props.step.isReadyToComplete" type="success" :icon="Check" circle></el-button>
+            <el-button v-else="props.step.isReadyToComplete" type="warning" :icon="EditPen" @click="editFeedback"
+                circle></el-button>
         </el-col>
     </el-row>
     <el-row v-if="step.description">
@@ -38,12 +39,16 @@
 
 <script setup lang="ts">
 import type { RoutineStep } from '~/interface/routineStep.type';
-import { Operation, Check } from '@element-plus/icons-vue'
+import { Operation, EditPen } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 
 const props = defineProps<{
     step: Partial<RoutineStep>,
     feedback: boolean
+}>();
+
+const emit = defineEmits<{
+    (event: 'openLoadContextFeedback'): void;
 }>();
 
 const spanNumber = ref(0);
@@ -83,8 +88,14 @@ const completeLoadContext = () => {
     if (!result)
         return;
 
+    emit('openLoadContextFeedback');
     props.step.isReadyToComplete = true;
 };
+
+const editFeedback = () => {
+    emit('openLoadContextFeedback');
+}
+
 
 </script>
 
