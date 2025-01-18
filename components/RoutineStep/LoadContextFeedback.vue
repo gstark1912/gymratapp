@@ -22,6 +22,10 @@
             <el-col v-if="loadContext.restBetweenSeries">
                 <RoutineStepLoadContextFeedbackValue v-model="loadContext.restBetweenSeries" :title="'Rest series'" />
             </el-col>
+            <el-col>
+                <el-text tag="sub" size="small">Esfuerzo</el-text>
+                <el-rate v-model="loadContext.effort" />
+            </el-col>
         </el-row>
         <br>
         <el-row v-if="loadContext" justify="space-between">

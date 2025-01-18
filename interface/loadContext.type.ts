@@ -11,4 +11,5 @@ export interface LoadContext {
 
     // UX needed properties
     isReadyToComplete: boolean;
+    effort: number;
 }

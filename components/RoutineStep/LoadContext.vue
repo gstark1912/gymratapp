@@ -62,20 +62,19 @@ const loadContextKeys = [
 ];
 
 onMounted(() => {
-
     if (props.step.loadContext) {
         let propCount = loadContextKeys.filter(key => props.step.loadContext[key]).length;;
 
         spanNumber.value = Math.floor(18 / propCount);
         props.step.isReadyToComplete = false;
-    }
+    };
 });
 
 const completeLoadContext = () => {
     let result = true;
     if (props.step.excercises) {
         props.step.excercises.forEach((v, i) => {
-            if (v.isReadyToComplete === false) {
+            if (v.loadContext && v.isReadyToComplete !== true) {
                 ElMessage({
                     message: v.name + ' no tiene la carga completada.',
                     type: 'warning',
