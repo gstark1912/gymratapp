@@ -3,7 +3,7 @@ import routineData from "~/data/routineData.json";
 import augustData from "~/data/augustData.json";
 import septemberData from "~/data/septemberData.json";
 import type { RoutineDay } from "~/interface/routineDay.type";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, getDocs, orderBy, query, where, documentId } from "firebase/firestore";
 import type { RoutineStep } from "~/interface/routineStep.type";
 
 export const useRoutinesStore = defineStore('routine', () => {
@@ -29,7 +29,9 @@ export const useRoutinesStore = defineStore('routine', () => {
         const routineCollection = collection($firestore, "routine");
 
         // Crea una query filtrando por el campo "userId"
-        const q = query(routineCollection, where("userId", "==", currentUser.value?.uid));
+        const q = query(routineCollection,
+            where("userId", "==", currentUser.value?.uid),
+            orderBy(documentId(), "desc"));
 
         // Ejecuta la query y obtiene los documentos
         const querySnapshot = await getDocs(q);
