@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, getDocs, limit, orderBy, query, startAfter, where, writeBatch } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, documentId, getDocs, limit, orderBy, query, startAfter, where, writeBatch } from "firebase/firestore";
 import type { Routine } from "~/interface/routine.type";
 import type { RoutineStep } from "~/interface/routineStep.type";
 import type { WorkoutSession } from "~/interface/workoutSession.type";
@@ -14,6 +14,7 @@ export const useWorkoutSessionStore = defineStore('workoutSession', () => {
 
     const session = ref<Partial<WorkoutSession>>({});
     const routineSteps = ref<RoutineStep[]>([]);
+    const stepsHistory = ref<Record<string, WorkoutSessionStep[]>>({});
 
     const startWorkoutSession = async (routineId: string, dayIndex: string) => {
         let routine = await getRoutineById(routineId) as Routine;
@@ -57,9 +58,11 @@ export const useWorkoutSessionStore = defineStore('workoutSession', () => {
 
     const saveWorkoutSessionSteps = async (id: string) => {
         try {
+            let date = new Date();
             let objs = routineSteps.value.map((item) => {
                 return {
                     dayId: item.dayId,
+                    dateTime: date,
                     excerciseRef: item.excerciseRef,
                     routineStepId: item.id,
                     isSkip: item.isSkip,
@@ -147,11 +150,54 @@ export const useWorkoutSessionStore = defineStore('workoutSession', () => {
         return sessions;
     };
 
+    const getWorkoutSessionStepsHistory = async (routineId: string, dayId: string) => {
+        if (!currentUser.value) {
+            return [];
+        };
+
+        const loadingInstance1 = ElLoading.service({ fullscreen: true });
+        const workoutSessionStepCollection = collection($firestore, "workoutSessionStep");
+
+        const q = query(
+            workoutSessionStepCollection,
+            where("userId", "==", currentUser.value?.uid),
+            where("dayId", "==", dayId),
+            where("routineId", "==", routineId),
+            orderBy(documentId(), "desc"),
+            limit(50)
+        );
+
+        // Ejecuta la query y obtiene los documentos
+        const querySnapshot = await getDocs(q);
+        const groupedDictionary: Record<string, WorkoutSessionStep[]> = {};
+
+        // Mapea los documentos a un array de objetos
+        querySnapshot.docs.forEach(doc => {
+            var data = {
+                id: doc.id,
+                dateTime: doc.data().dateTime?.toDate(),
+                ...doc.data() as WorkoutSessionStep
+            };
+
+            const groupKey = data.routineStepId;
+
+            if (!groupedDictionary[groupKey]) {
+                groupedDictionary[groupKey] = []; // Inicializa la lista si no existe
+            }
+
+            groupedDictionary[groupKey].push(data);
+        });
+        loadingInstance1.close();
+        stepsHistory.value = groupedDictionary;
+    };
+
     return {
         createWorkoutSession,
         startWorkoutSession,
         getSessions,
+        getWorkoutSessionStepsHistory,
         session,
-        routineSteps
+        routineSteps,
+        stepsHistory
     };
 });

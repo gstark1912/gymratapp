@@ -54,6 +54,25 @@ onMounted(() => {
 
 const emit = defineEmits(['update:dialogFormVisible']);
 const save = () => {
+    if (!props.loadContext?.effort) {
+        ElMessage({
+            message: 'Debe asignar un nivel de esfuerzo antes de guardar',
+            type: 'error',
+        });
+        return;
+    };
+
+    Object.keys(props.loadContext).forEach((key) => {
+        const value = props.loadContext![key as keyof LoadContext];
+        if (Array.isArray(value)) {
+            if (value.every(v => v === 0)) {
+                delete props.loadContext![key as keyof LoadContext];
+            }
+        } else if (value === 0) {
+            delete props.loadContext![key as keyof LoadContext];
+        }
+    });
+
     emit('update:dialogFormVisible', false);
 }
 

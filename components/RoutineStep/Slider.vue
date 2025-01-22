@@ -112,7 +112,6 @@ const emit = defineEmits<{
 const dialogFormVisible = ref(false);
 const dialogLoadContext = ref<Partial<LoadContext> | undefined>(undefined);
 const openLoadContextFeedback = (loadContext: LoadContext) => {
-    console.log("Slider");
     dialogFormVisible.value = !dialogFormVisible.value;
     dialogLoadContext.value = loadContext;
 }

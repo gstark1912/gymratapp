@@ -41,8 +41,8 @@ const { getRoutineById, getRoutineStepsByRoutineIdAndDay } = useRoutinesStore();
 const routine = ref<Partial<Routine>>({});
 
 const workoutStore = useWorkoutSessionStore();
-const { createWorkoutSession, startWorkoutSession } = workoutStore;
-const { session, routineSteps } = storeToRefs(workoutStore);
+const { createWorkoutSession, startWorkoutSession, getWorkoutSessionStepsHistory } = workoutStore;
+const { session, routineSteps, stepsHistory } = storeToRefs(workoutStore);
 
 onMounted(async () => {
     routineId.value = route.params.routineId.toString();
@@ -58,7 +58,10 @@ onMounted(async () => {
         routineId: routine.value.id,
         dayNumber: dayIndex.value,
         dateTime: date
-    }
+    };
+
+    await getWorkoutSessionStepsHistory(routineId.value, dayIndex.value);
+    console.log(stepsHistory.value);
 });
 
 const back = () => {
