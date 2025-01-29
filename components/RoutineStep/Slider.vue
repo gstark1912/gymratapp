@@ -10,7 +10,6 @@
         <div v-if="props.mode === 'train'" style="text-align: center">
             <el-button type="danger" @click="failStep" :disabled="completeEnabled">No lo hice</el-button>
             <el-button type="success" @click="completeStep" :disabled="!completeEnabled">Completar</el-button>
-            <el-divider />
         </div>
         <div v-else style="text-align: center">
             <el-button @click="prevSlide">Anterior</el-button>
@@ -40,6 +39,7 @@ onMounted(async () => {
     stepCount.value = props.steps.length;
 });
 
+// #region Funcionalidad Carousel
 const carouselRef = ref<any>(null);
 const nextSlide = () => {
     if (carouselRef.value) {
@@ -47,7 +47,6 @@ const nextSlide = () => {
     }
 };
 
-// Función para ir al slide anterior
 const prevSlide = () => {
     if (carouselRef.value) {
         carouselRef.value.prev();
@@ -104,6 +103,8 @@ const nextOrComplete = () => {
 
     console.log(computedSteps.value);
 }
+
+// #endregion
 
 const emit = defineEmits<{
     (event: "readyToSaveSession"): void;

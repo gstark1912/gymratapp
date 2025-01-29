@@ -22,11 +22,20 @@
             <el-statistic title="Rest" :value="step.loadContext.restBetweenSeries" suffix="''" />
         </el-col>
         <el-col :span="6" v-if="props.feedback">
-            <p></p>
-            <el-button v-if="!props.step.isReadyToComplete" type="info" @click="completeLoadContext" :icon="Operation"
-                circle></el-button>
-            <el-button v-else="props.step.isReadyToComplete" type="warning" :icon="EditPen" @click="editFeedback"
-                circle></el-button>
+            <el-row>
+                <el-col :span="12">
+                    <p></p>
+                    <el-button v-if="!props.step.isReadyToComplete" type="default" @click="completeLoadContext"
+                        :icon="EditPen" circle></el-button>
+                    <el-button v-else="props.step.isReadyToComplete" type="warning" :icon="EditPen"
+                        @click="editFeedback" circle></el-button>
+                </el-col>
+                <el-col :span="12">
+                    <p></p>
+                    <el-button type="primary" v-if="props.enableHistory" @click="checkHistory()" :icon="Histogram"
+                        circle></el-button>
+                </el-col>
+            </el-row>
         </el-col>
     </el-row>
     <el-row v-if="step.description">
@@ -35,16 +44,19 @@
             <em style="text-align: left;">{{ step.description }}</em>
         </el-col>
     </el-row>
+    <RoutineStepLoadContextHistory v-if="props.enableHistory" v-model:dialogFormVisible="historyDialog"
+        v-model:routineStepId="step.id" />
 </template>
 
 <script setup lang="ts">
 import type { RoutineStep } from '~/interface/routineStep.type';
-import { Operation, EditPen } from '@element-plus/icons-vue'
+import { EditPen, Histogram } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 
 const props = defineProps<{
     step: Partial<RoutineStep>,
-    feedback: boolean
+    feedback: boolean,
+    enableHistory?: boolean
 }>();
 
 const emit = defineEmits<{
@@ -95,6 +107,10 @@ const editFeedback = () => {
     emit('openLoadContextFeedback');
 }
 
+const historyDialog = ref(false);
+const checkHistory = () => {
+    historyDialog.value = true;
+}
 
 </script>
 

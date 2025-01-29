@@ -5,7 +5,7 @@
         </h4>
         <el-image class="card-image" :src="src" fit="contain" />
         <RoutineStepLoadContext v-if="props.routineStep.loadContext" :step="props.routineStep"
-            :feedback="enableStepFeedback"
+            :feedback="enableStepFeedback" :enableHistory="true"
             @openLoadContextFeedback="openLoadContextFeedback(props.routineStep.loadContext)" />
         <div v-if="props.routineStep.excercises">
             <el-divider />

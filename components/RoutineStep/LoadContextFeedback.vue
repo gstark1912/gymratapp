@@ -1,5 +1,5 @@
 <template>
-    <el-dialog v-model="showDialog" title="Carga" center :fullscreen="false" destroy-on-close :show-close="false">
+    <el-dialog v-model="showDialog" title="Carga" center :fullscreen="false" :show-close="false">
         <el-row v-if="loadContext" justify="end">
             <el-col :span="12" v-if="loadContext.rounds">
                 <RoutineStepLoadContextFeedbackValue v-model="loadContext.rounds[0]" :title="'Rondas'" />
@@ -30,7 +30,7 @@
         <br>
         <el-row v-if="loadContext" justify="space-between">
             <el-col :span="24" style="text-align: center;">
-                <el-button type="success" @click="save()">Guardar 💾</el-button>
+                <el-button type="success" @click="save()" :disabled="loadContext.effort === 0">Guardar 💾</el-button>
             </el-col>
         </el-row>
     </el-dialog>

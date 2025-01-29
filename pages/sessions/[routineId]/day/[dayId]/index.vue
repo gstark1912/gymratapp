@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="showScreen">
         <h3>{{ session.routineName }} - Dia {{ session.dayNumber }}</h3>
         <em>Inicio: {{ session.dateTime?.toLocaleString("es-AR") }}</em>
         <RoutineStepSlider v-if="routine.id && !buttonCompleteRef" :steps="routineSteps" mode="train"
@@ -42,8 +42,9 @@ const routine = ref<Partial<Routine>>({});
 
 const workoutStore = useWorkoutSessionStore();
 const { createWorkoutSession, startWorkoutSession, getWorkoutSessionStepsHistory } = workoutStore;
-const { session, routineSteps, stepsHistory } = storeToRefs(workoutStore);
+const { session, routineSteps } = storeToRefs(workoutStore);
 
+const showScreen = ref(false);
 onMounted(async () => {
     routineId.value = route.params.routineId.toString();
     dayIndex.value = route.params.dayId.toString();
@@ -61,7 +62,7 @@ onMounted(async () => {
     };
 
     await getWorkoutSessionStepsHistory(routineId.value, dayIndex.value);
-    console.log(stepsHistory.value);
+    showScreen.value = true;
 });
 
 const back = () => {
