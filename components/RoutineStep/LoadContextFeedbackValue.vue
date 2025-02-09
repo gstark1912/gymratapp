@@ -31,6 +31,10 @@ const emit = defineEmits(['update:modelValue']);
 const seriesValue = ref(props.modelValue);
 const suffix = ref(props.suffix);
 
+watch(() => props.modelValue, (newValue) => {
+    seriesValue.value = newValue;
+});
+
 watch(seriesValue, (newValue) => {
     emit('update:modelValue', newValue);
 });

@@ -1,30 +1,31 @@
 <template>
     <el-dialog v-model="showDialog" title="Carga" center :fullscreen="false" :show-close="false">
-        <el-row v-if="loadContext" justify="end">
-            <el-col :span="12" v-if="loadContext.rounds">
-                <RoutineStepLoadContextFeedbackValue v-model="loadContext.rounds[0]" :title="'Rondas'" />
+        {{ loadCtx }}
+        <el-row v-if="loadCtx" justify="end">
+            <el-col :span="12" v-if="loadCtx.rounds">
+                <RoutineStepLoadContextFeedbackValue v-model="loadCtx.rounds[0]" :title="'Rondas'" />
             </el-col>
-            <el-col :span="12" v-if="loadContext.restRound">
-                <RoutineStepLoadContextFeedbackValue v-model="loadContext.restRound" :title="'Rest rondas'" />
+            <el-col :span="12" v-if="loadCtx.restRound">
+                <RoutineStepLoadContextFeedbackValue v-model="loadCtx.restRound" :title="'Rest rondas'" />
             </el-col>
-            <el-col v-if="loadContext.series">
-                <RoutineStepLoadContextFeedbackValue v-model="loadContext.series[0]" :title="'Series'" />
+            <el-col v-if="loadCtx.series">
+                <RoutineStepLoadContextFeedbackValue v-model="loadCtx.series[0]" :title="'Series'" />
             </el-col>
-            <el-col v-if="loadContext.reps">
-                <RoutineStepLoadContextFeedbackValue v-model="loadContext.reps[0]" :title="'Reps'" />
+            <el-col v-if="loadCtx.reps">
+                <RoutineStepLoadContextFeedbackValue v-model="loadCtx.reps[0]" :title="'Reps'" />
             </el-col>
-            <el-col v-else-if="loadContext.repInTime">
-                <RoutineStepLoadContextFeedbackValue v-model="loadContext.repInTime[0]" :title="'Rest reps'" />
+            <el-col v-else-if="loadCtx.repInTime">
+                <RoutineStepLoadContextFeedbackValue v-model="loadCtx.repInTime[0]" :title="'Rest reps'" />
             </el-col>
-            <el-col v-if="loadContext.weight">
-                <RoutineStepLoadContextFeedbackValue v-model="loadContext.weight[0]" :suffix="'kg'" :title="'Weight'" />
+            <el-col v-if="loadCtx.weight">
+                <RoutineStepLoadContextFeedbackValue v-model="loadCtx.weight[0]" :suffix="'kg'" :title="'Weight'" />
             </el-col>
-            <el-col v-if="loadContext.restBetweenSeries">
-                <RoutineStepLoadContextFeedbackValue v-model="loadContext.restBetweenSeries" :title="'Rest series'" />
+            <el-col v-if="loadCtx.restBetweenSeries">
+                <RoutineStepLoadContextFeedbackValue v-model="loadCtx.restBetweenSeries" :title="'Rest series'" />
             </el-col>
             <el-col>
                 <el-text tag="sub" size="small">Esfuerzo</el-text>
-                <el-rate v-model="loadContext.effort" />
+                <el-rate v-model="loadCtx.effort" />
             </el-col>
         </el-row>
         <br>
@@ -33,6 +34,11 @@
                 <el-button type="success" @click="save()" :disabled="loadContext.effort === 0">Guardar 💾</el-button>
             </el-col>
         </el-row>
+        <template #footer>
+            <div class="dialog-footer">
+                <el-button @click="closeDialog" type="danger">X</el-button>
+            </div>
+        </template>
     </el-dialog>
 </template>
 
@@ -49,12 +55,22 @@ watch(() => props.dialogFormVisible, (newValue) => {
     showDialog.value = newValue;
 });
 
+const loadCtx = reactive<Partial<LoadContext>>(props.loadContext ? props.loadContext : {});
+watch(() => props.loadContext, (newValue) => {
+    Object.assign(loadCtx, newValue ? newValue : {});
+    loadCtx.effort = 0;
+});
+
 onMounted(() => {
 });
 
-const emit = defineEmits(['update:dialogFormVisible']);
+const closeDialog = () => {
+    emit('update:dialogFormVisible', false);
+};
+
+const emit = defineEmits(['update:dialogFormVisible', 'update:loadContext']);
 const save = () => {
-    if (!props.loadContext?.effort) {
+    if (!loadCtx?.effort) {
         ElMessage({
             message: 'Debe asignar un nivel de esfuerzo antes de guardar',
             type: 'error',
@@ -62,17 +78,19 @@ const save = () => {
         return;
     };
 
-    Object.keys(props.loadContext).forEach((key) => {
-        const value = props.loadContext![key as keyof LoadContext];
+    Object.keys(loadCtx).forEach((key) => {
+        const value = loadCtx![key as keyof LoadContext];
         if (Array.isArray(value)) {
             if (value.every(v => v === 0)) {
-                delete props.loadContext![key as keyof LoadContext];
+                delete loadCtx![key as keyof LoadContext];
             }
         } else if (value === 0) {
-            delete props.loadContext![key as keyof LoadContext];
+            delete loadCtx![key as keyof LoadContext];
         }
     });
 
+    // Emitir el nuevo objeto limpio al padre
+    emit('update:loadContext', { ...loadCtx });
     emit('update:dialogFormVisible', false);
 }
 

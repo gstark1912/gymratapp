@@ -1,6 +1,6 @@
 <template>
     <el-dialog v-model="showDialog" title="Cargas pasadas" center :fullscreen="true" destroy-on-close
-        :show-close="true">
+        :show-close="false">
         <p v-if="!steps">Sin datos..</p>
         <div v-else v-for="(history, index) in steps" :key="index">
             <span>
@@ -47,7 +47,6 @@ const { stepsHistory } = storeToRefs(workoutStore);
 const steps = ref<WorkoutSessionStep[]>([]);
 onMounted(() => {
     steps.value = stepsHistory.value[props.routineStepId];
-    console.log(steps.value);
 });
 
 const emit = defineEmits(['update:dialogFormVisible']);
