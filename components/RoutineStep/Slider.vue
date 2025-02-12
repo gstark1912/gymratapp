@@ -70,7 +70,6 @@ const completeEnabled = computed(() => {
 
 const completeStep = () => {
     let step = computedSteps.value.at(carouselRef.value.activeIndex);
-    console.log('Completado ' + step?.name);
     if (step)
         step.isCompleted = true;
 

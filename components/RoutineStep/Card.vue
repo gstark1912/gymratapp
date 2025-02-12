@@ -50,7 +50,6 @@ const emit = defineEmits<{
 }>();
 
 const openLoadContextFeedback = (loadContext: LoadContext) => {
-    console.log("Card");
     emit('openLoadContextFeedback', loadContext);
 }
 

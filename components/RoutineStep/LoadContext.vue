@@ -1,22 +1,22 @@
 <template>
     <el-row v-if="step.loadContext" justify="end">
         <el-col :span="12" v-if="step.loadContext.rounds">
-            <el-statistic title="Rounds" :value="step.loadContext.rounds[0]" />
+            <RoutineStepLoadContextValue title="Rounds" :value="step.loadContext.rounds" />
         </el-col>
         <el-col :span="12" v-if="step.loadContext.restRound">
             <el-statistic title="Rest per Round" :value="step.loadContext.restRound" suffix="''" />
         </el-col>
         <el-col :span="spanNumber" v-if="step.loadContext.series">
-            <el-statistic title="Series" :value="step.loadContext.series[0]" />
+            <RoutineStepLoadContextValue title="Series" :value="step.loadContext.series" />
         </el-col>
         <el-col :span="spanNumber" v-if="step.loadContext.reps">
-            <el-statistic title="Reps" :value="step.loadContext.reps[0]" />
+            <RoutineStepLoadContextValue title="Reps" :value="step.loadContext.reps" />
         </el-col>
         <el-col :span="spanNumber" v-else-if="step.loadContext.repInTime">
-            <el-statistic title="Reps" :value="step.loadContext.repInTime[0]" suffix="''" />
+            <RoutineStepLoadContextValue title="Reps" :value="step.loadContext.repInTime" />
         </el-col>
         <el-col :span="spanNumber" v-if="step.loadContext.weight">
-            <el-statistic title="Weight" :value="step.loadContext.weight[0]" suffix="kg" />
+            <RoutineStepLoadContextValue title="Weight" :value="step.loadContext.weight" suffix="kg" />
         </el-col>
         <el-col :span="spanNumber" v-if="step.loadContext.restBetweenSeries">
             <el-statistic title="Rest" :value="step.loadContext.restBetweenSeries" suffix="''" />

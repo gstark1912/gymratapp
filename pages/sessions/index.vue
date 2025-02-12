@@ -38,7 +38,6 @@ const sessions = ref<WorkoutSession[] | undefined>(undefined);
 
 onMounted(async () => {
     sessions.value = await getSessions();
-    console.log(sessions.value);
 });
 
 </script>

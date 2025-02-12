@@ -57,7 +57,15 @@ watch(() => props.dialogFormVisible, (newValue) => {
 
 const loadCtx = reactive<Partial<LoadContext>>(props.loadContext ? props.loadContext : {});
 watch(() => props.loadContext, (newValue) => {
-    Object.assign(loadCtx, newValue ? newValue : {});
+    // Reset de las propiedades previas
+    Object.keys(loadCtx).forEach(key => delete loadCtx[key as keyof typeof loadCtx]);
+
+    // Asignamos las nuevas propiedades
+    if (newValue) {
+        Object.assign(loadCtx, newValue);
+    }
+
+    // Seteamos effort en 0
     loadCtx.effort = 0;
 });
 
