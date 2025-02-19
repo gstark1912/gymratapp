@@ -54,14 +54,10 @@ watch(() => props.dialogFormVisible, (newValue) => {
     showDialog.value = newValue;
 });
 
-const loadCtx = reactive<Partial<LoadContext>>(props.loadContext ? props.loadContext : {});
+const loadCtx = ref<Partial<LoadContext>>(props.loadContext ?? {});
 watch(() => props.loadContext, (newValue) => {
-    // Reset de las propiedades previas
-    Object.keys(loadCtx).forEach(key => delete loadCtx[key as keyof typeof loadCtx]);
-
-    // Asignamos las nuevas propiedades
     if (newValue) {
-        Object.assign(loadCtx, newValue);
+        loadCtx.value = newValue; // Asigna la referencia directamente
     }
 });
 
@@ -74,7 +70,7 @@ const closeDialog = () => {
 
 const emit = defineEmits(['update:dialogFormVisible', 'update:loadContext']);
 const save = () => {
-    if (!loadCtx?.effort) {
+    if (!loadCtx.value?.effort) {
         ElMessage({
             message: 'Debe asignar un nivel de esfuerzo antes de guardar',
             type: 'error',
@@ -82,18 +78,18 @@ const save = () => {
         return;
     };
 
-    Object.keys(loadCtx).forEach((key) => {
-        const value = loadCtx![key as keyof LoadContext];
+    Object.keys(loadCtx.value).forEach((key) => {
+        const value = loadCtx.value![key as keyof LoadContext];
         if (Array.isArray(value)) {
             if (value.every(v => v === 0)) {
-                delete loadCtx![key as keyof LoadContext];
+                delete loadCtx.value![key as keyof LoadContext];
             }
         } else if (value === 0) {
-            delete loadCtx![key as keyof LoadContext];
+            delete loadCtx.value![key as keyof LoadContext];
         }
     });
-    // Emitir el nuevo objeto limpio al padre
-    emit('update:loadContext', { ...loadCtx });
+
+    emit('update:loadContext', loadCtx.value); // Emitir sin destructurar
     emit('update:dialogFormVisible', false);
 };
 

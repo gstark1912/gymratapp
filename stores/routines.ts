@@ -86,7 +86,7 @@ export const useRoutinesStore = defineStore('routine', () => {
             // Asegurar que loadContext existe y que effort esté presente
             if (data.loadContext) {
                 if (!("effort" in data.loadContext)) {
-                    data.loadContext.effort = 3;
+                    data.loadContext.effort = 0;
                 }
             }
 
@@ -95,7 +95,7 @@ export const useRoutinesStore = defineStore('routine', () => {
                 data.excercises = data.excercises.map((exercise) => {
                     if (exercise.loadContext) {
                         if (!("effort" in exercise.loadContext)) {
-                            exercise.loadContext.effort = 3;
+                            exercise.loadContext.effort = 0;
                         }
                     }
                     return exercise;
