@@ -80,10 +80,33 @@ export const useRoutinesStore = defineStore('routine', () => {
         const querySnapshot = await getDocs(q);
 
         // Mapea los documentos a un array de objetos
-        let steps = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-        }));
+        let steps = querySnapshot.docs.map((doc) => {
+            let data = doc.data();
+
+            // Asegurar que loadContext existe y que effort esté presente
+            if (data.loadContext) {
+                if (!("effort" in data.loadContext)) {
+                    data.loadContext.effort = 3;
+                }
+            }
+
+            // Si hay ejercicios, asegurarnos de que cada uno tenga loadContext y effort
+            if (data.excercises && Array.isArray(data.excercises)) {
+                data.excercises = data.excercises.map((exercise) => {
+                    if (exercise.loadContext) {
+                        if (!("effort" in exercise.loadContext)) {
+                            exercise.loadContext.effort = 3;
+                        }
+                    }
+                    return exercise;
+                });
+            }
+
+            return {
+                id: doc.id,
+                ...data
+            };
+        });
         loadingInstance1.close();
         return steps;
     }

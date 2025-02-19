@@ -163,7 +163,8 @@ export const useWorkoutSessionStore = defineStore('workoutSession', () => {
             where("userId", "==", currentUser.value?.uid),
             where("dayId", "==", dayId),
             where("routineId", "==", routineId),
-            orderBy(documentId(), "desc"),
+            where("dateTime", "!=", null),
+            orderBy("dateTime", "desc"),
             limit(50)
         );
 

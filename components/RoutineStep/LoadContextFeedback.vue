@@ -1,6 +1,5 @@
 <template>
     <el-dialog v-model="showDialog" title="Carga" center :fullscreen="false" :show-close="false">
-        {{ loadCtx }}
         <el-row v-if="loadCtx" justify="end">
             <el-col :span="12" v-if="loadCtx.rounds">
                 <RoutineStepLoadContextFeedbackValue v-model="loadCtx.rounds[0]" :title="'Rondas'" />
@@ -29,9 +28,9 @@
             </el-col>
         </el-row>
         <br>
-        <el-row v-if="loadContext" justify="space-between">
+        <el-row v-if="loadCtx" justify="space-between">
             <el-col :span="24" style="text-align: center;">
-                <el-button type="success" @click="save()" :disabled="loadContext.effort === 0">Guardar 💾</el-button>
+                <el-button type="success" @click="save()" :disabled="loadCtx.effort === 0">Guardar 💾</el-button>
             </el-col>
         </el-row>
         <template #footer>
@@ -64,9 +63,6 @@ watch(() => props.loadContext, (newValue) => {
     if (newValue) {
         Object.assign(loadCtx, newValue);
     }
-
-    // Seteamos effort en 0
-    loadCtx.effort = 0;
 });
 
 onMounted(() => {
@@ -96,11 +92,10 @@ const save = () => {
             delete loadCtx![key as keyof LoadContext];
         }
     });
-
     // Emitir el nuevo objeto limpio al padre
     emit('update:loadContext', { ...loadCtx });
     emit('update:dialogFormVisible', false);
-}
+};
 
 </script>
 

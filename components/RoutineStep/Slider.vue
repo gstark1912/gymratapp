@@ -99,8 +99,6 @@ const nextOrComplete = () => {
         });
         emit("readyToSaveSession");
     }
-
-    console.log(computedSteps.value);
 }
 
 // #endregion
