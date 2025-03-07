@@ -1,5 +1,5 @@
 <template>
-    <el-dialog v-model="showDialog" title="Carga" center :fullscreen="false" :show-close="false">
+    <el-dialog v-model="showDialog" title="Carga" center :fullscreen="true" :show-close="false">
         <el-row v-if="loadCtx" justify="end">
             <el-col :span="12" v-if="loadCtx.rounds">
                 <RoutineStepLoadContextFeedbackValue v-model="loadCtx.rounds[0]" :title="'Rondas'" />
@@ -11,13 +11,16 @@
                 <RoutineStepLoadContextFeedbackValue v-model="loadCtx.series[0]" :title="'Series'" />
             </el-col>
             <el-col v-if="loadCtx.reps">
-                <RoutineStepLoadContextFeedbackValue v-model="loadCtx.reps[0]" :title="'Reps'" />
+                <RoutineStepLoadContextFeedbackValue v-model="loadCtx.reps"
+                    :seriesValue="loadCtx.series ? loadCtx.series[0] : null" :title="'Reps'" />
             </el-col>
             <el-col v-else-if="loadCtx.repInTime">
-                <RoutineStepLoadContextFeedbackValue v-model="loadCtx.repInTime[0]" :title="'Rest reps'" />
+                <RoutineStepLoadContextFeedbackValue v-model="loadCtx.repInTime"
+                    :seriesValue="loadCtx.series ? loadCtx.series[0] : null" :title="'Time reps'" />
             </el-col>
             <el-col v-if="loadCtx.weight">
-                <RoutineStepLoadContextFeedbackValue v-model="loadCtx.weight[0]" :suffix="'kg'" :title="'Weight'" />
+                <RoutineStepLoadContextFeedbackValue v-model="loadCtx.weight"
+                    :seriesValue="loadCtx.series ? loadCtx.series[0] : null" :suffix="'kg'" :title="'Weight'" />
             </el-col>
             <el-col v-if="loadCtx.restBetweenSeries">
                 <RoutineStepLoadContextFeedbackValue v-model="loadCtx.restBetweenSeries" :title="'Rest series'" />

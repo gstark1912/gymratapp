@@ -31,7 +31,7 @@ export const useRoutinesStore = defineStore('routine', () => {
         // Crea una query filtrando por el campo "userId"
         const q = query(routineCollection,
             where("userId", "==", currentUser.value?.uid),
-            orderBy(documentId(), "desc"));
+            orderBy("datetimeCreated", "desc"));
 
         // Ejecuta la query y obtiene los documentos
         const querySnapshot = await getDocs(q);
