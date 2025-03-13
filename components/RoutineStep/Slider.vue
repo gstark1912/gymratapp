@@ -8,8 +8,17 @@
             </el-carousel-item>
         </el-carousel>
         <div v-if="props.mode === 'train'" style="text-align: center">
-            <el-button type="danger" @click="failStep" :disabled="completeEnabled">No lo hice</el-button>
-            <el-button type="success" @click="completeStep" :disabled="!completeEnabled">Completar</el-button>
+            <el-row justify="center">
+                <el-col :span="12">
+                    <el-button type="danger" @click="failStep" :disabled="completeEnabled">No lo hice</el-button>
+                </el-col>
+                <el-col :span="12">
+                    <el-button type="success" @click="completeStep" :disabled="!completeEnabled">Completar</el-button>
+                </el-col>
+                <el-col v-if="completeEnabled" :span="12">
+                    <el-checkbox v-model="updateChecked" label="Actualizar carga" size="large" />
+                </el-col>
+            </el-row>
         </div>
         <div v-else style="text-align: center">
             <el-button @click="prevSlide">Anterior</el-button>
@@ -68,6 +77,7 @@ const completeEnabled = computed(() => {
     return step.isReadyToComplete;
 });
 
+const updateChecked = ref(false);
 const completeStep = () => {
     let step = computedSteps.value.at(carouselRef.value.activeIndex);
     if (step)
@@ -75,6 +85,12 @@ const completeStep = () => {
 
     stepCount.value--;
     nextOrComplete();
+
+    if (updateChecked.value === true) {
+        emit("updateSessionStep", step as RoutineStep);
+    }
+
+    updateChecked.value = false;
 }
 
 const failStep = () => {
@@ -105,6 +121,8 @@ const nextOrComplete = () => {
 
 const emit = defineEmits<{
     (event: "readyToSaveSession"): void;
+    (event: "updateSessionStep", step: RoutineStep): void;
+
 }>();
 
 const dialogFormVisible = ref(false);

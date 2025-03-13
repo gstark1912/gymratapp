@@ -3,7 +3,7 @@ import routineData from "~/data/routineData.json";
 import augustData from "~/data/augustData.json";
 import septemberData from "~/data/septemberData.json";
 import type { RoutineDay } from "~/interface/routineDay.type";
-import { addDoc, collection, getDocs, orderBy, query, where, documentId } from "firebase/firestore";
+import { addDoc, collection, getDocs, orderBy, query, where, documentId, doc, updateDoc } from "firebase/firestore";
 import type { RoutineStep } from "~/interface/routineStep.type";
 
 export const useRoutinesStore = defineStore('routine', () => {
@@ -131,6 +131,46 @@ export const useRoutinesStore = defineStore('routine', () => {
         return true;
     }
 
+    const cleanStepBeforeUpdate = (step: any) => {
+        // Eliminar propiedades no deseadas
+        delete step.isReadyToComplete;
+        delete step.isSkip;
+        delete step.isCompleted;
+
+        // Verifica si tiene loadContext y lo limpia
+        if (step.loadContext) {
+            delete step.loadContext.effort;
+        }
+
+        // Si tiene ejercicios, iteramos recursivamente
+        if (Array.isArray(step.excercises)) {
+            step.excercises.forEach(cleanStepBeforeUpdate);
+        }
+    };
+
+    const updateRoutineSessionStep = async (updatedData: Partial<RoutineStep>) => {
+        if (!currentUser.value) {
+            return false;
+        }
+
+        // Convertir a objeto plano
+        const sanitizedData = JSON.parse(JSON.stringify(updatedData));
+        cleanStepBeforeUpdate(sanitizedData);
+        const loadingInstance = ElLoading.service({ fullscreen: true });
+        try {
+            const routineDocRef = doc($firestore, "routineStep", sanitizedData.id as string);
+
+            await updateDoc(routineDocRef, sanitizedData);
+        } catch (error) {
+            console.error("Error updating document:", error);
+            return false;
+        }
+        loadingInstance.close();
+        return true;
+    };
+
+
+
 
     function loadRoutineData() {
         try {
@@ -155,6 +195,7 @@ export const useRoutinesStore = defineStore('routine', () => {
         getRoutines,
         getRoutineById,
         getRoutineStepsByRoutineIdAndDay,
-        createRoutineStep
+        createRoutineStep,
+        updateRoutineSessionStep
     };
 });

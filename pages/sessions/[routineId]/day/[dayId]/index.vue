@@ -3,7 +3,7 @@
         <h3>{{ session.routineName }} - Dia {{ session.dayNumber }}</h3>
         <em>Inicio: {{ session.dateTime?.toLocaleString("es-AR") }}</em>
         <RoutineStepSlider v-if="routine.id && !buttonCompleteRef" :steps="routineSteps" mode="train"
-            @readyToSaveSession="readyToSaveSession" />
+            @readyToSaveSession="readyToSaveSession" @updateSessionStep="updateSessionStep" />
         <div v-if="buttonCompleteRef">
             <el-divider />
             <el-row>
@@ -37,7 +37,7 @@ const routineId = ref('');
 const dayIndex = ref('');
 const buttonCompleteRef = ref(false);
 
-const { getRoutineById, getRoutineStepsByRoutineIdAndDay } = useRoutinesStore();
+const { getRoutineById, getRoutineStepsByRoutineIdAndDay, updateRoutineSessionStep } = useRoutinesStore();
 const routine = ref<Partial<Routine>>({});
 
 const workoutStore = useWorkoutSessionStore();
@@ -82,6 +82,9 @@ const readyToSaveSession = () => {
     buttonCompleteRef.value = true;
 };
 
+const updateSessionStep = async (step: RoutineStep) => {
+    await updateRoutineSessionStep(step);
+};
 </script>
 
 <style scoped></style>
